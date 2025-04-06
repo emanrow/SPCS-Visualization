@@ -209,4 +209,36 @@ The project follows a test-driven development approach:
 
 ## License
 
-MIT License 
+MIT License
+
+## 2D Map Visualization Functionality
+
+### SPCS Zone Display
+When a user toggles an SPCS zone checkbox in the control panel:
+
+1. **Zone Boundary Visualization**:
+   - The selected zone's boundary should appear on the Leaflet map as a polygon with a distinct border color
+   - Each zone should have a semi-transparent fill color to distinguish it from other zones
+   - Colors should be assigned systematically (e.g., by projection type, by region, or using a predefined color scheme)
+
+2. **Information Display**:
+   - Clicking on a zone polygon should display a popup with key information:
+     - Zone name and ID
+     - Projection type (TM or LCC)
+     - Key parameters (Central Meridian/Longitude of Origin, Latitude of Origin, etc.)
+     - Area covered (states/regions)
+
+3. **Toggle Functionality**:
+   - Individual toggles: Each zone can be independently shown/hidden
+   - "Toggle All" checkbox: Controls visibility of all zones simultaneously
+   - When a zone is toggled on, it should be added to the map immediately
+   - When a zone is toggled off, it should be removed from the map immediately
+
+4. **Interaction with Coordinate Projection**:
+   - When a coordinate is projected using the input field, the relevant SPCS zone(s) that contain the coordinate should be highlighted
+   - The coordinate should be displayed in both geographic (lat/lon) and SPCS (northing/easting) coordinates for selected zones
+
+5. **Legend and Visual Style**:
+   - A legend should be available to help users understand the color coding (if applicable)
+   - Zones using Transverse Mercator projection should be visually distinct from zones using Lambert Conformal Conic projection
+   - Active (selected) zones should have a more prominent visual style than inactive ones 
