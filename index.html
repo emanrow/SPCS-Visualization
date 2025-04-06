@@ -1,0 +1,95 @@
+<!-- 
+  GOALS:
+  1. Create a visualization of the SPCS zones and their coordinate systems
+  2. Create a visualization of the rays from the center of the earth to the surface of an oblate spheroid for the Earth,
+  and continuing out to the coordinate on each selected SPCS zone.
+  3. Create a visualization of the errors in the rays
+
+  COORDINATE SYSTEM NOTES:
+  - Three.js uses a right-handed coordinate system where:
+    - +X points right (east)
+    - +Y points up (north)
+    - +Z points out of the screen (towards viewer)
+  - For geographic coordinates:
+    - Longitude 0° aligns with +Z axis
+    - Longitude 90°E aligns with +X axis
+    - North pole aligns with +Y axis
+  
+  TESTING INSTRUCTIONS:
+  1. Run tests by opening comprehensive-tests.html in a web browser
+  2. Test results will be written to test-results.txt in the same directory
+  3. View test results by opening test-results.txt in a text editor
+  4. The test file will automatically run tests and write results on page load
+  5. Each test run will append to the results file with a timestamp
+  6. Test results include detailed error measurements and pass/fail status
+  7. Visualization elements are shown in the browser window for visual verification
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPCS Visualization</title>
+  
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <style>
+    body, html { margin: 0; padding: 0; }
+    #map { height: 100vh; width: 70%; position: absolute; top: 0; left: 0; }
+    #three-container { 
+      height: 100vh; 
+      width: 30%; 
+      position: absolute; 
+      top: 0; 
+      right: 0;
+      background: #f0f0f0;
+      border-left: 1px solid #ccc;
+    }
+    .control-panel {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 10px;
+      border-radius: 5px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div id="three-container"></div>
+  <div class="control-panel">
+    <h6>Toggle SPCS Zones</h6>
+    <div id="spcs-toggle" class="form-check">
+      Loading...
+    </div>
+    <div class="mt-3">
+      <label>Enter GPS Coordinate:</label>
+      <input id="coord-input" class="form-control" placeholder="e.g., 42.2808,-83.7430">
+      <button id="project-btn" class="btn btn-primary btn-sm mt-2">Project Coordinate</button>
+    </div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  
+  <!-- Three.js -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+      }
+    }
+  </script>
+  
+  <!-- Main application script -->
+  <script type="module" src="src/index.js"></script>
+</body>
+</html>
