@@ -13,12 +13,42 @@ export async function loadSPCSZones() {
 export function processZoneData(data) {
   return data.features.map(feature => {
     const props = feature.properties;
-    const coords = feature.geometry.coordinates[0];
+    let bounds;
     
-    // Create bounds from coordinates
-    const bounds = L.latLngBounds(
-      coords.map(([lng, lat]) => [lat, lng])
-    );
+    // Handle different geometry types for bounds creation
+    if (feature.geometry.type === 'Polygon') {
+      // For Polygon, use the first ring of coordinates
+      const coords = feature.geometry.coordinates[0];
+      bounds = L.latLngBounds(
+        coords.map(([lng, lat]) => [lat, lng])
+      );
+    } 
+    else if (feature.geometry.type === 'MultiPolygon') {
+      // For MultiPolygon, create bounds from all polygons
+      bounds = null;
+      
+      // Process each polygon in the MultiPolygon
+      feature.geometry.coordinates.forEach(polygon => {
+        // Use the first ring of each polygon (outer ring)
+        const coords = polygon[0];
+        const polygonBounds = L.latLngBounds(
+          coords.map(([lng, lat]) => [lat, lng])
+        );
+        
+        if (!bounds) {
+          // Initialize bounds with the first polygon
+          bounds = polygonBounds;
+        } else {
+          // Extend bounds with each additional polygon
+          bounds.extend(polygonBounds);
+        }
+      });
+    }
+    else {
+      console.warn(`Unsupported geometry type: ${feature.geometry.type} for zone ${props.ZONENAME}`);
+      // Create an empty bounds as fallback
+      bounds = L.latLngBounds([]);
+    }
     
     return {
       // Basic zone information

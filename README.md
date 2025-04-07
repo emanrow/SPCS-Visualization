@@ -57,6 +57,7 @@ projection-demo/
 ├── src/
 │   ├── components/         # Reusable UI components
 │   │   ├── map.js         # Leaflet map initialization
+│   │   ├── mapUtils.js    # Map utility functions
 │   │   └── controls.js    # UI control handlers
 │   ├── math/              # Mathematical utilities
 │   │   ├── coordinates.js # Coordinate conversion functions
@@ -71,6 +72,7 @@ projection-demo/
 │   ├── unit/             # Unit tests
 │   │   ├── math/         # Math utility tests
 │   │   ├── api.test.js   # API surface validation tests 
+│   │   ├── mapUtils.test.js # Map utility tests
 │   │   └── spcs.test.js  # SPCS data handling tests
 │   └── integration/      # Integration tests
 ├── public/
@@ -126,6 +128,7 @@ npm run build
 - [x] Support both Polygon and MultiPolygon geometries
 - [x] Add robust error handling for zone display
 - [x] Fix zone information display in popups with actual API data
+- [x] Add auto-zoom to selected zone(s) feature
 
 ### Phase 2: SPCS Implementation
 - [ ] Create SPCS zone parameter database
@@ -165,6 +168,7 @@ The project follows a pragmatic testing approach:
    - Test mathematical functions
    - Verify SPCS zone data processing
    - Test coordinate transformations
+   - Test map utility functions
 
 2. **API Surface Validation Tests**:
    - Verify that methods we use on external libraries actually exist
@@ -179,11 +183,51 @@ The project follows a pragmatic testing approach:
 
 This balanced approach focuses testing efforts on the core mathematical components while keeping UI testing manageable.
 
+## 2D Map Features
+
+### SPCS Zone Display
+When a user toggles an SPCS zone checkbox in the control panel:
+
+1. **Zone Boundary Visualization**:
+   - The selected zone's boundary appears on the Leaflet map as a polygon with a distinct border color
+   - Each zone has a semi-transparent fill color to distinguish it from other zones
+   - Colors are assigned based on the zone's COLORMAP property from the API data, with a consistent color scheme
+   - Fallback colors are assigned by projection type when COLORMAP is unavailable
+
+2. **Information Display**:
+   - Clicking on a zone polygon displays a popup with detailed information:
+     - Zone name (from ZONENAME property)
+     - Zone Code (from ZONE property)
+     - FIPS Zone code (from FIPSZONE property)
+     - Object ID (from OBJECTID property)
+     - Area in square miles (from SQMI property)
+     - Projection type (if available)
+     - Other SPCS parameters when available (Central Meridian, Latitude of Origin, etc.)
+
+3. **Toggle Functionality**:
+   - Individual toggles: Each zone can be independently shown/hidden
+   - "Toggle All" checkbox: Controls visibility of all zones simultaneously
+   - When a zone is toggled on, it is added to the map immediately
+   - When a zone is toggled off, it is removed from the map immediately
+
+4. **Auto-Zoom Functionality**:
+   - When zones are selected, the map automatically zooms to show all selected zones
+   - When multiple zones are selected, the map shows all selected zones within view
+   - When zones are deselected, the map adjusts to show only the remaining selected zones
+   - When no zones are selected, the map returns to the default view of the entire US
+
+### Geometry Support
+   - Handles both simple Polygon geometries and complex MultiPolygon geometries
+   - Properly renders zones with multiple disconnected parts
+   - Calculates correct bounds for both geometry types
+   - Gracefully handles zones with missing or undefined parameters
+
 ## Development Guidelines
 
 1. **Code Organization**:
    - Keep components modular and focused
-   - Use ES modules for imports/exports
+   - Extract reusable functionality into separate modules
+   - Use proper unit testing for all functionality
    - Follow Three.js coordinate system conventions
    - Document all public APIs
 
@@ -215,37 +259,4 @@ This balanced approach focuses testing efforts on the core mathematical componen
 
 ## License
 
-MIT License
-
-## 2D Map Visualization Functionality
-
-### SPCS Zone Display
-When a user toggles an SPCS zone checkbox in the control panel:
-
-1. **Zone Boundary Visualization**:
-   - The selected zone's boundary appears on the Leaflet map as a polygon with a distinct border color
-   - Each zone has a semi-transparent fill color to distinguish it from other zones
-   - Colors are assigned based on the zone's COLORMAP property from the API data, with a consistent color scheme
-   - Fallback colors are assigned by projection type when COLORMAP is unavailable
-
-2. **Information Display**:
-   - Clicking on a zone polygon displays a popup with detailed information:
-     - Zone name (from ZONENAME property)
-     - Zone Code (from ZONE property)
-     - FIPS Zone code (from FIPSZONE property)
-     - Object ID (from OBJECTID property)
-     - Area in square miles (from SQMI property)
-     - Projection type (if available)
-     - Other SPCS parameters when available (Central Meridian, Latitude of Origin, etc.)
-
-3. **Toggle Functionality**:
-   - Individual toggles: Each zone can be independently shown/hidden
-   - "Toggle All" checkbox: Controls visibility of all zones simultaneously
-   - When a zone is toggled on, it is added to the map immediately
-   - When a zone is toggled off, it is removed from the map immediately
-
-4. **Geometry Support**:
-   - Handles both simple Polygon geometries and complex MultiPolygon geometries
-   - Properly renders zones with multiple disconnected parts
-   - Supports zones with missing or undefined parameters
-   - Gracefully handles different data structures from the API 
+MIT License 

@@ -77,6 +77,17 @@ describe('API Surface Validation', () => {
       expect(typeof bounds.getNorth).toBe('function');
       expect(typeof bounds.getWest).toBe('function');
       expect(typeof bounds.getEast).toBe('function');
+      
+      // Verify extend method exists (used for combining bounds)
+      expect(typeof bounds.extend).toBe('function');
+      
+      // Verify that we can create a new bounds object from an existing one
+      const newBounds = L.latLngBounds(bounds.getSouthWest(), bounds.getNorthEast());
+      expect(newBounds).toBeDefined();
+      expect(typeof newBounds.extend).toBe('function');
+      
+      // Check that this is how we should copy bounds (not using clone)
+      expect(typeof bounds.clone).not.toBe('function');
     });
   });
   

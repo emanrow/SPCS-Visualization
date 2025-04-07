@@ -1,5 +1,6 @@
 import { loadSPCSZones, processZoneData } from '../math/spcs.js';
 import { createZoneLayer, createZonePopup } from './map.js';
+import { zoomToVisibleZones } from './mapUtils.js';
 
 export function initControls(map, scene, camera) {
   const coordInput = document.getElementById('coord-input');
@@ -121,6 +122,9 @@ export function initControls(map, scene, camera) {
             
             // Update "Toggle All" checkbox state
             updateToggleAllState();
+            
+            // Zoom to all visible zones
+            zoomToVisibleZones(map, zoneData.zones, zoneData.visible);
           });
         } catch (error) {
           console.error(`Error creating layer for zone ${zone.name}:`, error);
@@ -149,6 +153,9 @@ export function initControls(map, scene, camera) {
             zoneData.visible.delete(idx);
           }
         });
+        
+        // Zoom to all visible zones after toggling all
+        zoomToVisibleZones(map, zoneData.zones, zoneData.visible);
       });
       
       // Function to update "Toggle All" state based on individual checkboxes
