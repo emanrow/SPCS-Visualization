@@ -203,7 +203,7 @@ npm run dev
 
 3. Run tests:
 ```bash
-npm test
+npm run test
 ```
 
 4. Build for production:

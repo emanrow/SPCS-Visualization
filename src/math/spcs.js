@@ -120,6 +120,35 @@ export function getProjectionType(zone) {
   return zone.projection === 'TM' ? 'Transverse Mercator' : 'Lambert Conformal Conic';
 }
 
+/**
+ * Get detailed projection type for a zone including all three supported types
+ * @param {Object} zone - The SPCS zone object
+ * @returns {string} - Human-readable projection type
+ */
+export function getDetailedProjectionType(zone) {
+  // First check if we have detailed params from our database
+  if (zone.spcsParams && zone.spcsParams.projectionType) {
+    switch (zone.spcsParams.projectionType) {
+      case 'TM': return 'Transverse Mercator';
+      case 'LCC': return 'Lambert Conformal Conic';
+      case 'OM': return 'Oblique Mercator';
+      default: return zone.spcsParams.projectionType; // Return as-is if unknown
+    }
+  }
+  
+  // Fall back to the basic projection field from the GeoJSON
+  if (zone.projection) {
+    switch (zone.projection) {
+      case 'TM': return 'Transverse Mercator';
+      case 'LCC': return 'Lambert Conformal Conic';
+      case 'OM': return 'Oblique Mercator';
+      default: return zone.projection; // Return as-is if unknown
+    }
+  }
+  
+  return 'Unknown Projection';
+}
+
 // Format DDMMSS string with proper degree symbols
 export function formatDDMMSS(ddmmssString) {
   if (!ddmmssString || typeof ddmmssString !== 'string') {

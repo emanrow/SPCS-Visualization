@@ -1,6 +1,7 @@
 import { loadSPCSZones, processZoneData } from '../math/spcs.js';
 import { createZoneLayer, createZonePopup } from './map.js';
 import { zoomToVisibleZones } from './mapUtils.js';
+import { visualizeProjection } from '../visualization/projections.js';
 
 export function initControls(map, scene, camera) {
   const coordInput = document.getElementById('coord-input');
@@ -114,10 +115,15 @@ export function initControls(map, scene, camera) {
               // Add zone to map
               layer.addTo(map);
               zoneData.visible.add(idx);
+              
+              // Call the projection visualization function when zone is selected
+              visualizeProjection(scene, zone);
             } else {
               // Remove zone from map
               map.removeLayer(layer);
               zoneData.visible.delete(idx);
+              
+              // TODO: Remove projection visualization when zone is deselected
             }
             
             // Update "Toggle All" checkbox state
@@ -147,10 +153,15 @@ export function initControls(map, scene, camera) {
             // Add all zones to map
             zoneData.layers[idx].addTo(map);
             zoneData.visible.add(idx);
+            
+            // Visualize projection for this zone
+            visualizeProjection(scene, zoneData.zones[idx]);
           } else {
             // Remove all zones from map
             map.removeLayer(zoneData.layers[idx]);
             zoneData.visible.delete(idx);
+            
+            // TODO: Remove projection visualization when zones are deselected
           }
         });
         
