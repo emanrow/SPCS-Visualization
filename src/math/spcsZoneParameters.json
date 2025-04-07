@@ -1,0 +1,1742 @@
+{
+  "metadata": {
+    "description": "State Plane Coordinate System Zone Parameters",
+    "source": "NOAA National Geodetic Survey - NOS NGS 13 and NOAA Manual NOS NGS 5",
+    "reference": "https://geodesy.noaa.gov/library/pdfs/SP_NOS_NGS_13.pdf",
+    "created": "2024-04-07",
+    "updated": "2024-04-08"
+  },
+  "NAD83": {
+    "zones": {
+      "0101": {
+        "name": "Alabama East",
+        "fips": "0101",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "85 50 W",
+          "latitudeOfOrigin": "30 30 N",
+          "scaleFactorDenominator": 25000,
+          "falseEasting": 200000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "0102": {
+        "name": "Alabama West",
+        "fips": "0102",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "87 30 W",
+          "latitudeOfOrigin": "30 00 N",
+          "scaleFactorDenominator": 15000,
+          "falseEasting": 600000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "0201": {
+        "name": "Arizona East",
+        "fips": "0201",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "110 10 W",
+          "latitudeOfOrigin": "31 00 N",
+          "scaleFactorDenominator": 10000,
+          "falseEasting": 213360.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "0202": {
+        "name": "Arizona Central",
+        "fips": "0202",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "111 55 W",
+          "latitudeOfOrigin": "31 00 N",
+          "scaleFactorDenominator": 10000,
+          "falseEasting": 213360.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "0203": {
+        "name": "Arizona West",
+        "fips": "0203",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "113 45 W",
+          "latitudeOfOrigin": "31 00 N",
+          "scaleFactorDenominator": 15000,
+          "falseEasting": 213360.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "0301": {
+        "name": "Arkansas North",
+        "fips": "0301",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "92 00 W",
+          "latitudeOfOrigin": "34 20 N",
+          "standardParallel1": "34 56 N",
+          "standardParallel2": "36 14 N",
+          "scaleFactorDenominator": 15609,
+          "falseEasting": 400000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "0302": {
+        "name": "Arkansas South",
+        "fips": "0302",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "92 00 W",
+          "latitudeOfOrigin": "32 40 N",
+          "standardParallel1": "33 18 N",
+          "standardParallel2": "34 46 N",
+          "scaleFactorDenominator": 12265,
+          "falseEasting": 400000.0,
+          "falseNorthing": 400000.0,
+          "units": "meters"
+        }
+      },
+      "0401": {
+        "name": "California I",
+        "fips": "0401",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "122 00 W",
+          "latitudeOfOrigin": "39 20 N",
+          "standardParallel1": "40 00 N",
+          "standardParallel2": "41 40 N",
+          "scaleFactorDenominator": 9491,
+          "falseEasting": 2000000.0,
+          "falseNorthing": 500000.0,
+          "units": "meters"
+        }
+      },
+      "0402": {
+        "name": "California II",
+        "fips": "0402",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "122 00 W",
+          "latitudeOfOrigin": "37 40 N",
+          "standardParallel1": "38 20 N",
+          "standardParallel2": "39 50 N",
+          "scaleFactorDenominator": 11720,
+          "falseEasting": 2000000.0,
+          "falseNorthing": 500000.0,
+          "units": "meters"
+        }
+      },
+      "0403": {
+        "name": "California III",
+        "fips": "0403",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "120 30 W",
+          "latitudeOfOrigin": "36 30 N",
+          "standardParallel1": "37 04 N",
+          "standardParallel2": "38 26 N",
+          "scaleFactorDenominator": 14120,
+          "falseEasting": 2000000.0,
+          "falseNorthing": 500000.0,
+          "units": "meters"
+        }
+      },
+      "0404": {
+        "name": "California IV",
+        "fips": "0404",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "119 00 W",
+          "latitudeOfOrigin": "35 20 N",
+          "standardParallel1": "36 00 N",
+          "standardParallel2": "37 15 N",
+          "scaleFactorDenominator": 16881,
+          "falseEasting": 2000000.0,
+          "falseNorthing": 500000.0,
+          "units": "meters"
+        }
+      },
+      "0405": {
+        "name": "California V",
+        "fips": "0405",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "118 00 W",
+          "latitudeOfOrigin": "33 30 N",
+          "standardParallel1": "34 02 N",
+          "standardParallel2": "35 28 N",
+          "scaleFactorDenominator": 12841,
+          "falseEasting": 2000000.0,
+          "falseNorthing": 500000.0,
+          "units": "meters"
+        }
+      },
+      "0406": {
+        "name": "California VI",
+        "fips": "0406",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "116 15 W",
+          "latitudeOfOrigin": "32 10 N",
+          "standardParallel1": "32 47 N",
+          "standardParallel2": "33 53 N",
+          "scaleFactorDenominator": 21807,
+          "falseEasting": 2000000.0,
+          "falseNorthing": 500000.0,
+          "units": "meters"
+        }
+      },
+      "5001": {
+        "name": "Alaska 1",
+        "fips": "5001",
+        "projectionType": "OM",
+        "params": {
+          "centralMeridian": "133 40 W",
+          "latitudeOfOrigin": "57 00 N",
+          "scaleFactorDenominator": 10000,
+          "falseEasting": 5000000.0,
+          "falseNorthing": -5000000.0,
+          "units": "meters",
+          "notes": "Skew axis azimuth = tan⁻¹(-¾)"
+        }
+      },
+      "5002": {
+        "name": "Alaska 2",
+        "fips": "5002",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "142 00 W",
+          "latitudeOfOrigin": "54 00 N",
+          "scaleFactorDenominator": 10000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "5003": {
+        "name": "Alaska 3",
+        "fips": "5003",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "146 00 W",
+          "latitudeOfOrigin": "54 00 N",
+          "scaleFactorDenominator": 10000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "5004": {
+        "name": "Alaska 4",
+        "fips": "5004",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "150 00 W",
+          "latitudeOfOrigin": "54 00 N",
+          "scaleFactorDenominator": 10000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "5005": {
+        "name": "Alaska 5",
+        "fips": "5005",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "154 00 W",
+          "latitudeOfOrigin": "54 00 N",
+          "scaleFactorDenominator": 10000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "5006": {
+        "name": "Alaska 6",
+        "fips": "5006",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "158 00 W",
+          "latitudeOfOrigin": "54 00 N",
+          "scaleFactorDenominator": 10000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "5007": {
+        "name": "Alaska 7",
+        "fips": "5007",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "162 00 W",
+          "latitudeOfOrigin": "54 00 N",
+          "scaleFactorDenominator": 10000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "5008": {
+        "name": "Alaska 8",
+        "fips": "5008",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "166 00 W",
+          "latitudeOfOrigin": "54 00 N",
+          "scaleFactorDenominator": 10000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "5009": {
+        "name": "Alaska 9",
+        "fips": "5009",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "170 00 W",
+          "latitudeOfOrigin": "54 00 N",
+          "scaleFactorDenominator": 10000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "5010": {
+        "name": "Alaska 10",
+        "fips": "5010",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "176 00 W",
+          "latitudeOfOrigin": "51 00 N",
+          "standardParallel1": "51 50 N",
+          "standardParallel2": "53 50 N",
+          "scaleFactorDenominator": 6582,
+          "falseEasting": 1000000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "5101": {
+        "name": "Hawaii 1",
+        "fips": "5101",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "155 30 W",
+          "latitudeOfOrigin": "18 50 N",
+          "scaleFactorDenominator": 30000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "5102": {
+        "name": "Hawaii 2",
+        "fips": "5102",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "156 40 W",
+          "latitudeOfOrigin": "20 20 N",
+          "scaleFactorDenominator": 30000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "5103": {
+        "name": "Hawaii 3",
+        "fips": "5103",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "158 00 W",
+          "latitudeOfOrigin": "21 10 N",
+          "scaleFactorDenominator": 100000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "5104": {
+        "name": "Hawaii 4",
+        "fips": "5104",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "159 30 W",
+          "latitudeOfOrigin": "21 50 N",
+          "scaleFactorDenominator": 100000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "5105": {
+        "name": "Hawaii 5",
+        "fips": "5105",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "160 10 W",
+          "latitudeOfOrigin": "21 40 N",
+          "scaleFactorDenominator": 1,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "1101": {
+        "name": "Idaho East",
+        "fips": "1101",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "112 10 W",
+          "latitudeOfOrigin": "41 40 N",
+          "scaleFactorDenominator": 19000,
+          "falseEasting": 200000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "1102": {
+        "name": "Idaho Central",
+        "fips": "1102",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "114 00 W",
+          "latitudeOfOrigin": "41 40 N",
+          "scaleFactorDenominator": 19000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "1103": {
+        "name": "Idaho West",
+        "fips": "1103",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "115 45 W",
+          "latitudeOfOrigin": "41 40 N",
+          "scaleFactorDenominator": 15000,
+          "falseEasting": 800000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "1201": {
+        "name": "Illinois East",
+        "fips": "1201",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "88 20 W",
+          "latitudeOfOrigin": "36 40 N",
+          "scaleFactorDenominator": 40000,
+          "falseEasting": 300000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "1202": {
+        "name": "Illinois West",
+        "fips": "1202",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "90 10 W",
+          "latitudeOfOrigin": "36 40 N",
+          "scaleFactorDenominator": 17000,
+          "falseEasting": 700000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "1301": {
+        "name": "Indiana East",
+        "fips": "1301",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "85 40 W",
+          "latitudeOfOrigin": "37 30 N",
+          "scaleFactorDenominator": 30000,
+          "falseEasting": 100000.0,
+          "falseNorthing": 250000.0,
+          "units": "meters"
+        }
+      },
+      "1302": {
+        "name": "Indiana West",
+        "fips": "1302",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "87 05 W",
+          "latitudeOfOrigin": "37 30 N",
+          "scaleFactorDenominator": 30000,
+          "falseEasting": 900000.0,
+          "falseNorthing": 250000.0,
+          "units": "meters"
+        }
+      },
+      "1401": {
+        "name": "Iowa North",
+        "fips": "1401",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "93 30 W",
+          "latitudeOfOrigin": "41 30 N",
+          "standardParallel1": "42 04 N",
+          "standardParallel2": "43 16 N",
+          "scaleFactorDenominator": 18304,
+          "falseEasting": 1500000.0,
+          "falseNorthing": 1000000.0,
+          "units": "meters"
+        }
+      },
+      "1402": {
+        "name": "Iowa South",
+        "fips": "1402",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "93 30 W",
+          "latitudeOfOrigin": "40 00 N",
+          "standardParallel1": "40 37 N",
+          "standardParallel2": "41 47 N",
+          "scaleFactorDenominator": 19368,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "1501": {
+        "name": "Kansas North",
+        "fips": "1501",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "98 00 W",
+          "latitudeOfOrigin": "38 20 N",
+          "standardParallel1": "38 43 N",
+          "standardParallel2": "39 47 N",
+          "scaleFactorDenominator": 23176,
+          "falseEasting": 400000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "1502": {
+        "name": "Kansas South",
+        "fips": "1502",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "98 30 W",
+          "latitudeOfOrigin": "36 40 N",
+          "standardParallel1": "37 16 N",
+          "standardParallel2": "38 34 N",
+          "scaleFactorDenominator": 15605,
+          "falseEasting": 400000.0,
+          "falseNorthing": 400000.0,
+          "units": "meters"
+        }
+      },
+      "1600": {
+        "name": "Kentucky One",
+        "fips": "1600",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "85 45 W",
+          "latitudeOfOrigin": "36 20 N",
+          "standardParallel1": "37 05 N",
+          "standardParallel2": "38 40 N",
+          "scaleFactorDenominator": 10520,
+          "falseEasting": 1500000.0,
+          "falseNorthing": 1000000.0,
+          "units": "meters"
+        }
+      },
+      "1601": {
+        "name": "Kentucky North",
+        "fips": "1601",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "84 15 W",
+          "latitudeOfOrigin": "37 30 N",
+          "standardParallel1": "37 58 N",
+          "standardParallel2": "38 58 N",
+          "scaleFactorDenominator": 26371,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "1602": {
+        "name": "Kentucky South",
+        "fips": "1602",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "85 45 W",
+          "latitudeOfOrigin": "36 20 N",
+          "standardParallel1": "36 44 N",
+          "standardParallel2": "37 56 N",
+          "scaleFactorDenominator": 18316,
+          "falseEasting": 500000.0,
+          "falseNorthing": 500000.0,
+          "units": "meters"
+        }
+      },
+      "1701": {
+        "name": "Louisiana North",
+        "fips": "1701",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "92 30 W",
+          "latitudeOfOrigin": "30 30 N",
+          "standardParallel1": "31 10 N",
+          "standardParallel2": "32 40 N",
+          "scaleFactorDenominator": 11729,
+          "falseEasting": 1000000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "1702": {
+        "name": "Louisiana South",
+        "fips": "1702",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "91 20 W",
+          "latitudeOfOrigin": "28 30 N",
+          "standardParallel1": "29 18 N",
+          "standardParallel2": "30 42 N",
+          "scaleFactorDenominator": 13467,
+          "falseEasting": 1000000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "1703": {
+        "name": "Louisiana Offshore",
+        "fips": "1703",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "91 20 W",
+          "latitudeOfOrigin": "25 30 N",
+          "standardParallel1": "26 10 N",
+          "standardParallel2": "27 50 N",
+          "scaleFactorDenominator": 9505,
+          "falseEasting": 1000000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "2001": {
+        "name": "Kentucky North",
+        "fips": "2001",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "84 15 W",
+          "latitudeOfOrigin": "37 30 N",
+          "standardParallel1": "37 58 N",
+          "standardParallel2": "38 58 N",
+          "scaleFactorDenominator": 10520,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "2402": {
+        "name": "Michigan Central",
+        "fips": "2402",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "84 22 W",
+          "latitudeOfOrigin": "43 19 N",
+          "standardParallel1": "44 11 N",
+          "standardParallel2": "45 42 N",
+          "scaleFactorDenominator": 11456,
+          "falseEasting": 6000000.0,
+          "falseNorthing": 0.0,
+          "units": "feet_us"
+        }
+      },
+      "3104": {
+        "name": "New York Long Island",
+        "fips": "3104",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "74 00 W",
+          "latitudeOfOrigin": "40 10 N",
+          "standardParallel1": "40 40 N",
+          "standardParallel2": "41 02 N",
+          "scaleFactorDenominator": 196094,
+          "falseEasting": 300000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "5200": {
+        "name": "Puerto Rico & Virgin Islands",
+        "fips": "5200",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "66 26 W",
+          "latitudeOfOrigin": "17 50 N",
+          "standardParallel1": "18 02 N",
+          "standardParallel2": "18 26 N",
+          "scaleFactorDenominator": 165138,
+          "falseEasting": 200000.0,
+          "falseNorthing": 200000.0,
+          "units": "meters"
+        }
+      },
+      "1801": {
+        "name": "Maine East",
+        "fips": "1801",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "68 30 W",
+          "latitudeOfOrigin": "43 40 N",
+          "scaleFactorDenominator": 10000,
+          "falseEasting": 300000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "1802": {
+        "name": "Maine West",
+        "fips": "1802",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "70 10 W",
+          "latitudeOfOrigin": "42 50 N",
+          "scaleFactorDenominator": 30000,
+          "falseEasting": 900000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "1900": {
+        "name": "Maryland",
+        "fips": "1900",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "77 00 W",
+          "latitudeOfOrigin": "37 40 N",
+          "standardParallel1": "38 18 N",
+          "standardParallel2": "39 27 N",
+          "scaleFactorDenominator": 19939,
+          "falseEasting": 400000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "2001": {
+        "name": "Massachusetts Mainland",
+        "fips": "2001",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "71 30 W",
+          "latitudeOfOrigin": "41 00 N",
+          "standardParallel1": "41 43 N",
+          "standardParallel2": "42 41 N",
+          "scaleFactorDenominator": 28209,
+          "falseEasting": 200000.0,
+          "falseNorthing": 750000.0,
+          "units": "meters"
+        }
+      },
+      "2002": {
+        "name": "Massachusetts Island",
+        "fips": "2002",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "70 30 W",
+          "latitudeOfOrigin": "41 00 N",
+          "standardParallel1": "41 17 N",
+          "standardParallel2": "41 29 N",
+          "scaleFactorDenominator": 659052,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "2111": {
+        "name": "Michigan North",
+        "fips": "2111",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "87 00 W",
+          "latitudeOfOrigin": "44 47 N",
+          "standardParallel1": "45 29 N",
+          "standardParallel2": "47 05 N",
+          "scaleFactorDenominator": 10292,
+          "falseEasting": 8000000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "2112": {
+        "name": "Michigan Central",
+        "fips": "2112",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "84 22 W",
+          "latitudeOfOrigin": "43 19 N",
+          "standardParallel1": "44 11 N",
+          "standardParallel2": "45 42 N",
+          "scaleFactorDenominator": 11456,
+          "falseEasting": 6000000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "2113": {
+        "name": "Michigan South",
+        "fips": "2113",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "84 22 W",
+          "latitudeOfOrigin": "41 30 N",
+          "standardParallel1": "42 06 N",
+          "standardParallel2": "43 40 N",
+          "scaleFactorDenominator": 10739,
+          "falseEasting": 4000000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "2201": {
+        "name": "Minnesota North",
+        "fips": "2201",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "93 06 W",
+          "latitudeOfOrigin": "46 30 N",
+          "standardParallel1": "47 02 N",
+          "standardParallel2": "48 38 N",
+          "scaleFactorDenominator": 10290,
+          "falseEasting": 800000.0,
+          "falseNorthing": 100000.0,
+          "units": "meters"
+        }
+      },
+      "2202": {
+        "name": "Minnesota Central",
+        "fips": "2202",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "94 15 W",
+          "latitudeOfOrigin": "45 00 N",
+          "standardParallel1": "45 37 N",
+          "standardParallel2": "47 03 N",
+          "scaleFactorDenominator": 12824,
+          "falseEasting": 800000.0,
+          "falseNorthing": 100000.0,
+          "units": "meters"
+        }
+      },
+      "2203": {
+        "name": "Minnesota South",
+        "fips": "2203",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "94 00 W",
+          "latitudeOfOrigin": "43 00 N",
+          "standardParallel1": "43 47 N",
+          "standardParallel2": "45 13 N",
+          "scaleFactorDenominator": 12827,
+          "falseEasting": 800000.0,
+          "falseNorthing": 100000.0,
+          "units": "meters"
+        }
+      },
+      "2301": {
+        "name": "Mississippi East",
+        "fips": "2301",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "88 50 W",
+          "latitudeOfOrigin": "29 30 N",
+          "scaleFactorDenominator": 20000,
+          "falseEasting": 300000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "2302": {
+        "name": "Mississippi West",
+        "fips": "2302",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "90 20 W",
+          "latitudeOfOrigin": "29 30 N",
+          "scaleFactorDenominator": 20000,
+          "falseEasting": 700000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "2401": {
+        "name": "Missouri East",
+        "fips": "2401",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "90 30 W",
+          "latitudeOfOrigin": "35 50 N",
+          "scaleFactorDenominator": 15000,
+          "falseEasting": 250000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "2402": {
+        "name": "Missouri Central",
+        "fips": "2402",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "92 30 W",
+          "latitudeOfOrigin": "35 50 N",
+          "scaleFactorDenominator": 15000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "2403": {
+        "name": "Missouri West",
+        "fips": "2403",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "94 30 W",
+          "latitudeOfOrigin": "36 10 N",
+          "scaleFactorDenominator": 17000,
+          "falseEasting": 850000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "2500": {
+        "name": "Montana",
+        "fips": "2500",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "109 30 W",
+          "latitudeOfOrigin": "44 15 N",
+          "standardParallel1": "45 00 N",
+          "standardParallel2": "49 00 N",
+          "scaleFactorDenominator": 1646,
+          "falseEasting": 600000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "2600": {
+        "name": "Nebraska",
+        "fips": "2600",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "100 00 W",
+          "latitudeOfOrigin": "39 50 N",
+          "standardParallel1": "40 00 N",
+          "standardParallel2": "43 00 N",
+          "scaleFactorDenominator": 2929,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "2701": {
+        "name": "Nevada East",
+        "fips": "2701",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "115 35 W",
+          "latitudeOfOrigin": "34 45 N",
+          "scaleFactorDenominator": 10000,
+          "falseEasting": 200000.0,
+          "falseNorthing": 8000000.0,
+          "units": "meters"
+        }
+      },
+      "2702": {
+        "name": "Nevada Central",
+        "fips": "2702",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "116 40 W",
+          "latitudeOfOrigin": "34 45 N",
+          "scaleFactorDenominator": 10000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 6000000.0,
+          "units": "meters"
+        }
+      },
+      "2703": {
+        "name": "Nevada West",
+        "fips": "2703",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "118 35 W",
+          "latitudeOfOrigin": "34 45 N",
+          "scaleFactorDenominator": 10000,
+          "falseEasting": 800000.0,
+          "falseNorthing": 4000000.0,
+          "units": "meters"
+        }
+      },
+      "2800": {
+        "name": "New Hampshire",
+        "fips": "2800",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "71 40 W",
+          "latitudeOfOrigin": "42 30 N",
+          "scaleFactorDenominator": 30000,
+          "falseEasting": 300000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "2900": {
+        "name": "New Jersey",
+        "fips": "2900",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "74 30 W",
+          "latitudeOfOrigin": "38 50 N",
+          "scaleFactorDenominator": 10000,
+          "falseEasting": 150000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "3001": {
+        "name": "New Mexico East",
+        "fips": "3001",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "104 20 W",
+          "latitudeOfOrigin": "31 00 N",
+          "scaleFactorDenominator": 11000,
+          "falseEasting": 165000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "3002": {
+        "name": "New Mexico Central",
+        "fips": "3002",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "106 15 W",
+          "latitudeOfOrigin": "31 00 N",
+          "scaleFactorDenominator": 10000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "3003": {
+        "name": "New Mexico West",
+        "fips": "3003",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "107 50 W",
+          "latitudeOfOrigin": "31 00 N",
+          "scaleFactorDenominator": 12000,
+          "falseEasting": 830000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "3101": {
+        "name": "New York East",
+        "fips": "3101",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "74 30 W",
+          "latitudeOfOrigin": "38 50 N",
+          "scaleFactorDenominator": 10000,
+          "falseEasting": 150000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "3102": {
+        "name": "New York Central",
+        "fips": "3102",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "76 35 W",
+          "latitudeOfOrigin": "40 00 N",
+          "scaleFactorDenominator": 16000,
+          "falseEasting": 250000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "3103": {
+        "name": "New York West",
+        "fips": "3103",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "78 35 W",
+          "latitudeOfOrigin": "40 00 N",
+          "scaleFactorDenominator": 16000,
+          "falseEasting": 350000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "3200": {
+        "name": "North Carolina",
+        "fips": "3200",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "79 00 W",
+          "latitudeOfOrigin": "33 45 N",
+          "standardParallel1": "34 20 N",
+          "standardParallel2": "36 10 N",
+          "scaleFactorDenominator": 7849,
+          "falseEasting": 609601.22,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "3301": {
+        "name": "North Dakota North",
+        "fips": "3301",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "100 30 W",
+          "latitudeOfOrigin": "47 00 N",
+          "standardParallel1": "47 26 N",
+          "standardParallel2": "48 44 N",
+          "scaleFactorDenominator": 15587,
+          "falseEasting": 600000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "3302": {
+        "name": "North Dakota South",
+        "fips": "3302",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "100 30 W",
+          "latitudeOfOrigin": "45 40 N",
+          "standardParallel1": "46 11 N",
+          "standardParallel2": "47 29 N",
+          "scaleFactorDenominator": 15589,
+          "falseEasting": 600000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "3401": {
+        "name": "Ohio North",
+        "fips": "3401",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "82 30 W",
+          "latitudeOfOrigin": "39 40 N",
+          "standardParallel1": "40 26 N",
+          "standardParallel2": "41 42 N",
+          "scaleFactorDenominator": 16431,
+          "falseEasting": 600000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "3402": {
+        "name": "Ohio South",
+        "fips": "3402",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "82 30 W",
+          "latitudeOfOrigin": "38 00 N",
+          "standardParallel1": "38 44 N",
+          "standardParallel2": "40 02 N",
+          "scaleFactorDenominator": 15602,
+          "falseEasting": 600000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "3501": {
+        "name": "Oklahoma North",
+        "fips": "3501",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "98 00 W",
+          "latitudeOfOrigin": "35 00 N",
+          "standardParallel1": "35 34 N",
+          "standardParallel2": "36 46 N",
+          "scaleFactorDenominator": 18318,
+          "falseEasting": 600000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "3502": {
+        "name": "Oklahoma South",
+        "fips": "3502",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "98 00 W",
+          "latitudeOfOrigin": "33 20 N",
+          "standardParallel1": "33 56 N",
+          "standardParallel2": "35 14 N",
+          "scaleFactorDenominator": 15611,
+          "falseEasting": 600000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "3601": {
+        "name": "Oregon North",
+        "fips": "3601",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "120 30 W",
+          "latitudeOfOrigin": "43 40 N",
+          "standardParallel1": "44 20 N",
+          "standardParallel2": "46 00 N",
+          "scaleFactorDenominator": 9486,
+          "falseEasting": 2500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "3602": {
+        "name": "Oregon South",
+        "fips": "3602",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "120 30 W",
+          "latitudeOfOrigin": "41 40 N",
+          "standardParallel1": "42 20 N",
+          "standardParallel2": "44 00 N",
+          "scaleFactorDenominator": 9488,
+          "falseEasting": 1500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "3701": {
+        "name": "Pennsylvania North",
+        "fips": "3701",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "77 45 W",
+          "latitudeOfOrigin": "40 10 N",
+          "standardParallel1": "40 53 N",
+          "standardParallel2": "41 57 N",
+          "scaleFactorDenominator": 23170,
+          "falseEasting": 600000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "3702": {
+        "name": "Pennsylvania South",
+        "fips": "3702",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "77 45 W",
+          "latitudeOfOrigin": "39 20 N",
+          "standardParallel1": "39 56 N",
+          "standardParallel2": "40 58 N",
+          "scaleFactorDenominator": 24691,
+          "falseEasting": 600000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "3800": {
+        "name": "Rhode Island",
+        "fips": "3800",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "71 30 W",
+          "latitudeOfOrigin": "41 05 N",
+          "scaleFactorDenominator": 160000,
+          "falseEasting": 100000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "3900": {
+        "name": "South Carolina",
+        "fips": "3900",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "81 00 W",
+          "latitudeOfOrigin": "31 50 N",
+          "standardParallel1": "32 30 N",
+          "standardParallel2": "34 50 N",
+          "scaleFactorDenominator": 4846,
+          "falseEasting": 609600.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "4001": {
+        "name": "South Dakota North",
+        "fips": "4001",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "100 00 W",
+          "latitudeOfOrigin": "43 50 N",
+          "standardParallel1": "44 25 N",
+          "standardParallel2": "45 41 N",
+          "scaleFactorDenominator": 16424,
+          "falseEasting": 600000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "4002": {
+        "name": "South Dakota South",
+        "fips": "4002",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "100 20 W",
+          "latitudeOfOrigin": "42 20 N",
+          "standardParallel1": "42 50 N",
+          "standardParallel2": "44 24 N",
+          "scaleFactorDenominator": 10738,
+          "falseEasting": 600000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "4100": {
+        "name": "Tennessee",
+        "fips": "4100",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "86 00 W",
+          "latitudeOfOrigin": "34 20 N",
+          "standardParallel1": "35 15 N",
+          "standardParallel2": "36 25 N",
+          "scaleFactorDenominator": 19380,
+          "falseEasting": 600000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "4201": {
+        "name": "Texas North",
+        "fips": "4201",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "101 30 W",
+          "latitudeOfOrigin": "34 00 N",
+          "standardParallel1": "34 39 N",
+          "standardParallel2": "36 11 N",
+          "scaleFactorDenominator": 11220,
+          "falseEasting": 200000.0,
+          "falseNorthing": 1000000.0,
+          "units": "meters"
+        }
+      },
+      "4202": {
+        "name": "Texas North Central",
+        "fips": "4202",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "98 30 W",
+          "latitudeOfOrigin": "31 40 N",
+          "standardParallel1": "32 08 N",
+          "standardParallel2": "33 58 N",
+          "scaleFactorDenominator": 7851,
+          "falseEasting": 600000.0,
+          "falseNorthing": 2000000.0,
+          "units": "meters"
+        }
+      },
+      "4203": {
+        "name": "Texas Central",
+        "fips": "4203",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "100 20 W",
+          "latitudeOfOrigin": "29 40 N",
+          "standardParallel1": "30 07 N",
+          "standardParallel2": "31 53 N",
+          "scaleFactorDenominator": 8456,
+          "falseEasting": 700000.0,
+          "falseNorthing": 3000000.0,
+          "units": "meters"
+        }
+      },
+      "4204": {
+        "name": "Texas South Central",
+        "fips": "4204",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "99 00 W",
+          "latitudeOfOrigin": "27 50 N",
+          "standardParallel1": "28 23 N",
+          "standardParallel2": "30 17 N",
+          "scaleFactorDenominator": 7312,
+          "falseEasting": 600000.0,
+          "falseNorthing": 4000000.0,
+          "units": "meters"
+        }
+      },
+      "4205": {
+        "name": "Texas South",
+        "fips": "4205",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "98 30 W",
+          "latitudeOfOrigin": "25 40 N",
+          "standardParallel1": "26 10 N",
+          "standardParallel2": "27 50 N",
+          "scaleFactorDenominator": 9505,
+          "falseEasting": 300000.0,
+          "falseNorthing": 5000000.0,
+          "units": "meters"
+        }
+      },
+      "4301": {
+        "name": "Utah North",
+        "fips": "4301",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "111 30 W",
+          "latitudeOfOrigin": "40 20 N",
+          "standardParallel1": "40 43 N",
+          "standardParallel2": "41 47 N",
+          "scaleFactorDenominator": 23170,
+          "falseEasting": 500000.0,
+          "falseNorthing": 1000000.0,
+          "units": "meters"
+        }
+      },
+      "4302": {
+        "name": "Utah Central",
+        "fips": "4302",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "111 30 W",
+          "latitudeOfOrigin": "38 20 N",
+          "standardParallel1": "39 01 N",
+          "standardParallel2": "40 39 N",
+          "scaleFactorDenominator": 9883,
+          "falseEasting": 500000.0,
+          "falseNorthing": 2000000.0,
+          "units": "meters"
+        }
+      },
+      "4303": {
+        "name": "Utah South",
+        "fips": "4303",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "111 30 W",
+          "latitudeOfOrigin": "36 40 N",
+          "standardParallel1": "37 13 N",
+          "standardParallel2": "38 21 N",
+          "scaleFactorDenominator": 20533,
+          "falseEasting": 500000.0,
+          "falseNorthing": 3000000.0,
+          "units": "meters"
+        }
+      },
+      "4400": {
+        "name": "Vermont",
+        "fips": "4400",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "72 30 W",
+          "latitudeOfOrigin": "42 30 N",
+          "scaleFactorDenominator": 28000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "4501": {
+        "name": "Virginia North",
+        "fips": "4501",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "78 30 W",
+          "latitudeOfOrigin": "37 40 N",
+          "standardParallel1": "38 02 N",
+          "standardParallel2": "39 12 N",
+          "scaleFactorDenominator": 19374,
+          "falseEasting": 3500000.0,
+          "falseNorthing": 2000000.0,
+          "units": "meters"
+        }
+      },
+      "4502": {
+        "name": "Virginia South",
+        "fips": "4502",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "78 30 W",
+          "latitudeOfOrigin": "36 20 N",
+          "standardParallel1": "36 46 N",
+          "standardParallel2": "37 58 N",
+          "scaleFactorDenominator": 18315,
+          "falseEasting": 3500000.0,
+          "falseNorthing": 1000000.0,
+          "units": "meters"
+        }
+      },
+      "4601": {
+        "name": "Washington North",
+        "fips": "4601",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "120 50 W",
+          "latitudeOfOrigin": "47 00 N",
+          "standardParallel1": "47 30 N",
+          "standardParallel2": "48 44 N",
+          "scaleFactorDenominator": 17317,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "4602": {
+        "name": "Washington South",
+        "fips": "4602",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "120 30 W",
+          "latitudeOfOrigin": "45 20 N",
+          "standardParallel1": "45 50 N",
+          "standardParallel2": "47 20 N",
+          "scaleFactorDenominator": 11709,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "4701": {
+        "name": "West Virginia North",
+        "fips": "4701",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "79 30 W",
+          "latitudeOfOrigin": "38 30 N",
+          "standardParallel1": "39 00 N",
+          "standardParallel2": "40 15 N",
+          "scaleFactorDenominator": 16875,
+          "falseEasting": 600000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "4702": {
+        "name": "West Virginia South",
+        "fips": "4702",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "81 00 W",
+          "latitudeOfOrigin": "37 00 N",
+          "standardParallel1": "37 29 N",
+          "standardParallel2": "38 53 N",
+          "scaleFactorDenominator": 13455,
+          "falseEasting": 600000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "4801": {
+        "name": "Wisconsin North",
+        "fips": "4801",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "90 00 W",
+          "latitudeOfOrigin": "45 10 N",
+          "standardParallel1": "45 34 N",
+          "standardParallel2": "46 46 N",
+          "scaleFactorDenominator": 18297,
+          "falseEasting": 600000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "4802": {
+        "name": "Wisconsin Central",
+        "fips": "4802",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "90 00 W",
+          "latitudeOfOrigin": "43 50 N",
+          "standardParallel1": "44 15 N",
+          "standardParallel2": "45 30 N",
+          "scaleFactorDenominator": 16865,
+          "falseEasting": 600000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "4803": {
+        "name": "Wisconsin South",
+        "fips": "4803",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "90 00 W",
+          "latitudeOfOrigin": "42 00 N",
+          "standardParallel1": "42 44 N",
+          "standardParallel2": "44 04 N",
+          "scaleFactorDenominator": 14825,
+          "falseEasting": 600000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "4901": {
+        "name": "Wyoming East",
+        "fips": "4901",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "105 10 W",
+          "latitudeOfOrigin": "40 30 N",
+          "scaleFactorDenominator": 16000,
+          "falseEasting": 200000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "4902": {
+        "name": "Wyoming East Central",
+        "fips": "4902",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "107 20 W",
+          "latitudeOfOrigin": "40 30 N",
+          "scaleFactorDenominator": 16000,
+          "falseEasting": 400000.0,
+          "falseNorthing": 100000.0,
+          "units": "meters"
+        }
+      },
+      "4903": {
+        "name": "Wyoming West Central",
+        "fips": "4903",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "108 45 W",
+          "latitudeOfOrigin": "40 30 N",
+          "scaleFactorDenominator": 16000,
+          "falseEasting": 600000.0,
+          "falseNorthing": 0.0,
+          "units": "meters"
+        }
+      },
+      "4904": {
+        "name": "Wyoming West",
+        "fips": "4904",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "110 05 W",
+          "latitudeOfOrigin": "40 30 N",
+          "scaleFactorDenominator": 16000,
+          "falseEasting": 800000.0,
+          "falseNorthing": 100000.0,
+          "units": "meters"
+        }
+      },
+      "5400": {
+        "name": "Guam",
+        "fips": "5400",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "144 45 E",
+          "latitudeOfOrigin": "13 30 N",
+          "scaleFactorDenominator": 1,
+          "falseEasting": 100000.0,
+          "falseNorthing": 200000.0,
+          "units": "meters"
+        }
+      }
+    }
+  },
+  "NAD27": {
+    "zones": {
+      "0101": {
+        "name": "Alabama East",
+        "fips": "0101",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "85 50 W",
+          "latitudeOfOrigin": "30 30 N",
+          "scaleFactorDenominator": 25000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "feet_us"
+        }
+      },
+      "0102": {
+        "name": "Alabama West",
+        "fips": "0102",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "87 30 W",
+          "latitudeOfOrigin": "30 00 N",
+          "scaleFactorDenominator": 15000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "feet_us"
+        }
+      },
+      "0401": {
+        "name": "California I",
+        "fips": "0401",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "122 00 W",
+          "latitudeOfOrigin": "39 20 N",
+          "standardParallel1": "40 00 N",
+          "standardParallel2": "41 40 N",
+          "scaleFactorDenominator": 9491,
+          "falseEasting": 2000000.0,
+          "falseNorthing": 0.0,
+          "units": "feet_us"
+        }
+      },
+      "2401": {
+        "name": "Michigan North",
+        "fips": "2401",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "87 00 W",
+          "latitudeOfOrigin": "44 47 N",
+          "standardParallel1": "45 29 N",
+          "standardParallel2": "47 05 N",
+          "scaleFactorDenominator": 10292,
+          "falseEasting": 2000000.0,
+          "falseNorthing": 0.0,
+          "units": "feet_us"
+        }
+      },
+      "3104": {
+        "name": "New York Long Island",
+        "fips": "3104",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "74 00 W",
+          "latitudeOfOrigin": "40 30 N",
+          "standardParallel1": "40 40 N",
+          "standardParallel2": "41 02 N",
+          "scaleFactorDenominator": 196094,
+          "falseEasting": 600000.0,
+          "falseNorthing": 0.0,
+          "units": "feet_us"
+        }
+      }
+    }
+  }
+} 

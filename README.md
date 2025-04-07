@@ -55,6 +55,38 @@ For the implementation of SPCS zones and their projections, we need accurate par
 
 For our implementation, we will primarily use the NOAA documentation as the authoritative source for zone parameters.
 
+## SPCS Zone Parameters Database
+
+This project includes a comprehensive JSON database (`src/math/spcsZoneParameters.json`) containing parameters for all 125 zones of the State Plane Coordinate System:
+
+### Database Features
+
+- **Complete Coverage**: Contains all 125 SPCS zones defined for NAD83 and selected NAD27 zones
+- **Official Parameters**: Based on NOAA NGS documentation (NOS NGS 13)
+- **Reference System**: All NAD83 projections are defined with respect to the Geodetic Reference System of 1980 (GRS 80) ellipsoid:
+  - Semi-major axis = 6,378,137 meters (exact)
+  - Inverse geometric flattening 1/f = 298.257222101 (derived)
+- **Data Format**:
+  - Coordinates stored in DDMMSS format (e.g., "85 50 W" for longitude)
+  - Scale factors stored as integer denominators for maximum precision
+  - False easting/northing values in meters or US survey feet
+- **Projection Types**:
+  - Transverse Mercator (TM)
+  - Lambert Conformal Conic (LCC)
+  - Oblique Mercator (OM) - used for Alaska Zone 1 only
+- **Organization**:
+  - Zones identified by FIPS codes
+  - Grouped by datum (NAD83 and NAD27)
+  - Includes metadata with source information
+
+### Access and Usage
+
+The database can be imported and used for:
+- Accurate coordinate transformations between geographic and SPCS grid coordinates
+- Visualization of projection surfaces (cylinders, cones)
+- Analysis of scale factors and distortion patterns across zones
+- Historical comparisons between NAD27 and NAD83 projections
+
 ## Tech Stack
 
 - Frontend:
@@ -149,8 +181,8 @@ npm run build
 - [x] Add auto-zoom to selected zone(s) feature
 
 ### Phase 2: SPCS Implementation
-- [ ] Create SPCS zone parameter database using NOAA official documentation
-- [ ] Extract zone parameters from NOS NGS 13 appendices for both NAD83 and NAD27
+- [x] Create SPCS zone parameter database using NOAA official documentation
+- [x] Extract zone parameters from NOS NGS 13 appendices for both NAD83 and NAD27
 - [ ] Implement TM projection calculations
 - [ ] Implement LCC projection calculations
 - [ ] Add scale factor calculations
