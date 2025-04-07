@@ -106,6 +106,40 @@ export function createTransverseMercatorCylinder(scene, zone) {
         console.log(`Rotated cylinder to Latitude of Origin: ${angle}°`);
       }
     }
+    
+    // 3. Apply scale factor
+    if (params.scaleFactor) {
+      // Extract the integer denominator (e.g. 10000 means 1 - 1/10000 = 0.9999)
+      let scaleFactorNumber;
+      
+      // Try parsing as a direct number first
+      if (typeof params.scaleFactor === 'number') {
+        scaleFactorNumber = params.scaleFactor;
+      } 
+      // Then try parsing as a string representation
+      else if (typeof params.scaleFactor === 'string') {
+        // Handle different possible formats
+        if (params.scaleFactor.includes('/')) {
+          // Format like "1/10000"
+          const parts = params.scaleFactor.split('/');
+          if (parts.length === 2) {
+            scaleFactorNumber = parseInt(parts[1]);
+          }
+        } else {
+          // Direct integer format
+          scaleFactorNumber = parseInt(params.scaleFactor);
+        }
+      }
+      
+      if (scaleFactorNumber && !isNaN(scaleFactorNumber)) {
+        // Calculate actual scale factor: 1 - 1/denominator
+        const actualScaleFactor = 1 - (1 / scaleFactorNumber);
+        
+        // Apply scale (scale the radius)
+        cylinderGroup.scale.set(actualScaleFactor, 1, actualScaleFactor);
+        console.log(`Applied scale factor: ${actualScaleFactor} (1 - 1/${scaleFactorNumber})`);
+      }
+    }
   }
   
   // Add the cylinder group to the scene
