@@ -21,7 +21,15 @@ export function processZoneData(data) {
     );
     
     return {
+      // Basic zone information
       name: props.ZONENAME,
+      zoneCode: props.ZONE,
+      fipsZone: props.FIPSZONE,
+      objectId: props.OBJECTID,
+      squareMiles: props.SQMI,
+      colorMap: props.COLORMAP,
+      
+      // Traditional SPCS parameters (may not be present in this dataset)
       projection: props.PROJECTION,
       centralMeridian: props.CENTRAL_MERIDIAN,
       latitudeOfOrigin: props.LATITUDE_OF_ORIGIN,
@@ -30,8 +38,13 @@ export function processZoneData(data) {
       falseNorthing: props.FALSE_NORTHING,
       standardParallel1: props.STANDARD_PARALLEL_1,
       standardParallel2: props.STANDARD_PARALLEL_2,
+      
+      // Keep original data and bounds
       bounds,
-      originalFeature: feature
+      originalFeature: feature,
+      
+      // Store all original properties for future reference
+      allProperties: props
     };
   });
 }

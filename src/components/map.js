@@ -18,8 +18,24 @@ export function createZoneLayer(zone) {
     throw new Error('Zone is missing geometry data');
   }
   
-  // Generate a color based on the projection type
-  let fillColor = zone.projection === 'TM' ? '#3388ff' : '#ff8833';
+  // Generate a color based on the projection type or colorMap if available
+  let fillColor;
+  
+  if (zone.colorMap) {
+    // Use a consistent color scheme based on colorMap value
+    const colorScheme = [
+      '#3388ff', // Blue
+      '#ff8833', // Orange
+      '#33ff88', // Green
+      '#8833ff', // Purple
+      '#ff3388', // Pink
+      '#88ff33'  // Lime
+    ];
+    fillColor = colorScheme[zone.colorMap % colorScheme.length];
+  } else {
+    // Fallback to projection-based coloring
+    fillColor = zone.projection === 'TM' ? '#3388ff' : '#ff8833';
+  }
   
   const geometry = zone.originalFeature.geometry;
   let latlngs;
@@ -55,11 +71,34 @@ export function createZonePopup(zone) {
   // Format the zone information as HTML
   let content = `
     <div class="zone-popup">
-      <h4>${zone.name}</h4>
-      <p><strong>Projection:</strong> ${zone.projection === 'TM' ? 'Transverse Mercator' : 'Lambert Conformal Conic'}</p>
+      <h4>${zone.name || 'Unnamed Zone'}</h4>
   `;
   
-  // Only add parameters if they're defined
+  // Basic zone information
+  if (zone.zoneCode) {
+    content += `<p><strong>Zone Code:</strong> ${zone.zoneCode}</p>`;
+  }
+  
+  if (zone.fipsZone) {
+    content += `<p><strong>FIPS Zone:</strong> ${zone.fipsZone}</p>`;
+  }
+  
+  if (zone.objectId) {
+    content += `<p><strong>Object ID:</strong> ${zone.objectId}</p>`;
+  }
+  
+  if (zone.squareMiles) {
+    content += `<p><strong>Area:</strong> ${zone.squareMiles.toLocaleString()} sq. miles</p>`;
+  }
+  
+  // Add projection information if available
+  if (zone.projection) {
+    content += `<p><strong>Projection:</strong> ${zone.projection === 'TM' ? 'Transverse Mercator' : 'Lambert Conformal Conic'}</p>`;
+  } else {
+    content += `<p><strong>Projection:</strong> Not specified</p>`;
+  }
+  
+  // Traditional SPCS parameters (if available)
   if (zone.centralMeridian !== undefined) {
     content += `<p><strong>Central Meridian:</strong> ${zone.centralMeridian.toFixed(4)}°</p>`;
   }
@@ -72,12 +111,20 @@ export function createZonePopup(zone) {
     content += `<p><strong>Scale Factor:</strong> ${zone.scaleFactor.toFixed(4)}</p>`;
   }
   
-  // Add LCC-specific parameters if applicable
-  if (zone.projection === 'LCC' && zone.standardParallel1 && zone.standardParallel2) {
-    content += `
-      <p><strong>Standard Parallel 1:</strong> ${zone.standardParallel1.toFixed(4)}°</p>
-      <p><strong>Standard Parallel 2:</strong> ${zone.standardParallel2.toFixed(4)}°</p>
-    `;
+  if (zone.falseEasting !== undefined) {
+    content += `<p><strong>False Easting:</strong> ${zone.falseEasting.toLocaleString()} meters</p>`;
+  }
+  
+  if (zone.falseNorthing !== undefined) {
+    content += `<p><strong>False Northing:</strong> ${zone.falseNorthing.toLocaleString()} meters</p>`;
+  }
+  
+  if (zone.standardParallel1 !== undefined) {
+    content += `<p><strong>Standard Parallel 1:</strong> ${zone.standardParallel1.toFixed(4)}°</p>`;
+  }
+  
+  if (zone.standardParallel2 !== undefined) {
+    content += `<p><strong>Standard Parallel 2:</strong> ${zone.standardParallel2.toFixed(4)}°</p>`;
   }
   
   content += '</div>';

@@ -125,6 +125,7 @@ npm run build
 - [x] Display SPCS zones on 2D map
 - [x] Support both Polygon and MultiPolygon geometries
 - [x] Add robust error handling for zone display
+- [x] Fix zone information display in popups with actual API data
 
 ### Phase 2: SPCS Implementation
 - [ ] Create SPCS zone parameter database
@@ -224,14 +225,18 @@ When a user toggles an SPCS zone checkbox in the control panel:
 1. **Zone Boundary Visualization**:
    - The selected zone's boundary appears on the Leaflet map as a polygon with a distinct border color
    - Each zone has a semi-transparent fill color to distinguish it from other zones
-   - Colors are assigned by projection type (blue for Transverse Mercator, orange for Lambert Conformal Conic)
+   - Colors are assigned based on the zone's COLORMAP property from the API data, with a consistent color scheme
+   - Fallback colors are assigned by projection type when COLORMAP is unavailable
 
 2. **Information Display**:
-   - Clicking on a zone polygon displays a popup with key information:
-     - Zone name and ID
-     - Projection type (TM or LCC)
-     - Key parameters (Central Meridian/Longitude of Origin, Latitude of Origin, etc.)
-     - Standard parallels for LCC projections
+   - Clicking on a zone polygon displays a popup with detailed information:
+     - Zone name (from ZONENAME property)
+     - Zone Code (from ZONE property)
+     - FIPS Zone code (from FIPSZONE property)
+     - Object ID (from OBJECTID property)
+     - Area in square miles (from SQMI property)
+     - Projection type (if available)
+     - Other SPCS parameters when available (Central Meridian, Latitude of Origin, etc.)
 
 3. **Toggle Functionality**:
    - Individual toggles: Each zone can be independently shown/hidden
@@ -242,4 +247,5 @@ When a user toggles an SPCS zone checkbox in the control panel:
 4. **Geometry Support**:
    - Handles both simple Polygon geometries and complex MultiPolygon geometries
    - Properly renders zones with multiple disconnected parts
-   - Supports zones with missing or undefined parameters 
+   - Supports zones with missing or undefined parameters
+   - Gracefully handles different data structures from the API 
