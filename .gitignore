@@ -28,4 +28,7 @@ yarn-error.log*
 
 # Temporary files
 *.tmp
-*.temp 
+*.temp
+
+# Documentation PDFs (too large for GitHub)
+*.pdf 
