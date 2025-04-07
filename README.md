@@ -100,6 +100,15 @@ The database can be imported and used for:
   - Jest for unit testing
   - API Surface Validation testing
 
+## Dependencies and Version Requirements
+
+- Three.js >= 0.160.0
+  - Uses ES modules import system
+  - Requires explicit imports from `three/addons/` for certain geometries
+  - Import map configured in index.html for module resolution
+- Leaflet 1.9.4
+- Bootstrap 5.3.2
+
 ## Project Structure
 
 ```
@@ -143,6 +152,42 @@ projection-demo/
   - Longitude 0° aligns with +Z axis
   - Longitude 90°E aligns with +X axis
   - North pole aligns with +Y axis
+
+## Three.js Implementation Notes
+
+### Datum Ellipsoid Visualization
+- Uses `ParametricGeometry` from Three.js addons (requires version >= 0.160.0)
+- Earth texture is aligned so that:
+  - Prime Meridian (0° longitude) aligns with +Z axis
+  - 90°E aligns with +X axis
+  - North Pole points to +Y axis
+- Graticule lines are rendered with:
+  - `depthTest: false` to ensure visibility at all zoom levels
+  - Semi-transparent (opacity: 0.5) to prevent visual clutter
+  - Primary lines (Equator, Prime Meridian) in lighter color
+
+### Camera and Controls
+- Camera positioned initially at ~4x Earth radius
+- OrbitControls configured for Earth-scale navigation:
+  - Minimum distance: 1.1x Earth radius
+  - Maximum distance: 8x Earth radius
+  - Damping enabled for smooth movement
+- Uses adjusted near/far planes for Earth-scale rendering
+
+### Required Three.js Imports
+```javascript
+// In index.html importmap
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+
+// In your modules
+import { ParametricGeometry } from 'three/addons/geometries/ParametricGeometry.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+```
 
 ## Development Setup
 
