@@ -1,7 +1,17 @@
+import { loadSPCSZones, processZoneData } from '../math/spcs.js';
+import { createZoneLayer, createZonePopup } from './map.js';
+
 export function initControls(map, scene, camera) {
   const coordInput = document.getElementById('coord-input');
   const projectBtn = document.getElementById('project-btn');
   const spcsToggle = document.getElementById('spcs-toggle');
+  
+  // Store zone data and layers
+  const zoneData = {
+    zones: [],
+    layers: {},
+    visible: new Set()
+  };
   
   // Handle coordinate projection
   projectBtn.addEventListener('click', () => {
@@ -25,14 +35,20 @@ export function initControls(map, scene, camera) {
     // TODO: Add 3D visualization
   });
   
+  // Show loading status
+  spcsToggle.innerHTML = 'Loading SPCS zones...';
+  
   // Load SPCS zones
-  fetch('https://opendata.arcgis.com/datasets/23178a639bdc4d658816b3ea8ee6c3ae_0.geojson')
-    .then(res => res.json())
+  loadSPCSZones()
     .then(data => {
-      // Sort features by zone name
-      const sortedFeatures = [...data.features].sort((a, b) => 
-        a.properties.ZONENAME.localeCompare(b.properties.ZONENAME)
-      );
+      console.log('Loaded SPCS data:', data);
+      
+      // Process the zone data
+      zoneData.zones = processZoneData(data);
+      console.log('Processed zones:', zoneData.zones);
+      
+      // Sort zones by name
+      zoneData.zones.sort((a, b) => a.name.localeCompare(b.name));
       
       // Create toggle UI
       spcsToggle.innerHTML = '';
@@ -60,8 +76,14 @@ export function initControls(map, scene, camera) {
       hr.className = 'my-2';
       spcsToggle.appendChild(hr);
       
+      // Check if we have zones
+      if (zoneData.zones.length === 0) {
+        spcsToggle.innerHTML += '<p>No SPCS zones found. Please check the console for errors.</p>';
+        return;
+      }
+      
       // Add zone checkboxes
-      sortedFeatures.forEach((feature, idx) => {
+      zoneData.zones.forEach((zone, idx) => {
         const div = document.createElement('div');
         div.className = 'form-check';
         
@@ -73,14 +95,74 @@ export function initControls(map, scene, camera) {
         const label = document.createElement('label');
         label.className = 'form-check-label';
         label.htmlFor = `zone-${idx}`;
-        label.textContent = feature.properties.ZONENAME;
+        label.textContent = zone.name;
         
         div.appendChild(checkbox);
         div.appendChild(label);
         spcsToggle.appendChild(div);
         
-        // TODO: Add zone visualization toggle
+        try {
+          // Create layer for this zone (but don't add to map yet)
+          const layer = createZoneLayer(zone);
+          layer.bindPopup(() => createZonePopup(zone));
+          zoneData.layers[idx] = layer;
+          
+          // Add toggle event handler
+          checkbox.addEventListener('change', (e) => {
+            if (e.target.checked) {
+              // Add zone to map
+              layer.addTo(map);
+              zoneData.visible.add(idx);
+            } else {
+              // Remove zone from map
+              map.removeLayer(layer);
+              zoneData.visible.delete(idx);
+            }
+            
+            // Update "Toggle All" checkbox state
+            updateToggleAllState();
+          });
+        } catch (error) {
+          console.error(`Error creating layer for zone ${zone.name}:`, error);
+          label.style.color = 'red';
+          label.title = 'Error: ' + error.message;
+        }
       });
+      
+      // Add "Toggle All" handler
+      toggleAllCheckbox.addEventListener('change', (e) => {
+        const checkboxes = spcsToggle.querySelectorAll('input[type="checkbox"]:not(#toggle-all)');
+        
+        checkboxes.forEach((checkbox, idx) => {
+          // Skip checkboxes for zones with errors
+          if (!zoneData.layers[idx]) return;
+          
+          checkbox.checked = e.target.checked;
+          
+          if (e.target.checked) {
+            // Add all zones to map
+            zoneData.layers[idx].addTo(map);
+            zoneData.visible.add(idx);
+          } else {
+            // Remove all zones from map
+            map.removeLayer(zoneData.layers[idx]);
+            zoneData.visible.delete(idx);
+          }
+        });
+      });
+      
+      // Function to update "Toggle All" state based on individual checkboxes
+      function updateToggleAllState() {
+        const checkboxes = spcsToggle.querySelectorAll('input[type="checkbox"]:not(#toggle-all)');
+        const allChecked = zoneData.visible.size === checkboxes.length;
+        const someChecked = zoneData.visible.size > 0 && zoneData.visible.size < checkboxes.length;
+        
+        toggleAllCheckbox.checked = allChecked;
+        toggleAllCheckbox.indeterminate = someChecked;
+      }
     })
-    .catch(console.error);
+    .catch(error => {
+      console.error('Failed to load SPCS zones:', error);
+      spcsToggle.innerHTML = `<div class="alert alert-danger">Failed to load SPCS zones: ${error.message}</div>`;
+    });
 } 

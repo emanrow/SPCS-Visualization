@@ -30,7 +30,25 @@ export function processZoneData(data) {
       falseNorthing: props.FALSE_NORTHING,
       standardParallel1: props.STANDARD_PARALLEL_1,
       standardParallel2: props.STANDARD_PARALLEL_2,
-      bounds
+      bounds,
+      originalFeature: feature
     };
   });
+}
+
+export function createZoneBoundary(zone) {
+  // Create a GeoJSON representation of the zone boundary
+  return {
+    type: 'Feature',
+    properties: {
+      name: zone.name,
+      projection: zone.projection
+    },
+    geometry: zone.originalFeature.geometry
+  };
+}
+
+export function getProjectionType(zone) {
+  // Return human-readable projection type
+  return zone.projection === 'TM' ? 'Transverse Mercator' : 'Lambert Conformal Conic';
 } 

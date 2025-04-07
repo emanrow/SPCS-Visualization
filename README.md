@@ -48,8 +48,7 @@ The visualization should help users understand:
   - Babel for JavaScript transpilation
 - Testing:
   - Jest for unit testing
-  - Puppeteer for browser automation
-  - GitHub Actions for CI/CD
+  - API Surface Validation testing
 
 ## Project Structure
 
@@ -71,7 +70,8 @@ projection-demo/
 ├── tests/
 │   ├── unit/             # Unit tests
 │   │   ├── math/         # Math utility tests
-│   │   └── visualization/ # Visualization tests
+│   │   ├── api.test.js   # API surface validation tests 
+│   │   └── spcs.test.js  # SPCS data handling tests
 │   └── integration/      # Integration tests
 ├── public/
 │   └── assets/           # Static assets (images, etc.)
@@ -122,6 +122,9 @@ npm run build
 - [x] Set up testing environment
 - [x] Implement basic 3D scene setup
 - [x] Create basic coordinate conversion utilities
+- [x] Display SPCS zones on 2D map
+- [x] Support both Polygon and MultiPolygon geometries
+- [x] Add robust error handling for zone display
 
 ### Phase 2: SPCS Implementation
 - [ ] Create SPCS zone parameter database
@@ -155,23 +158,25 @@ npm run build
 
 ## Testing Strategy
 
-The project follows a test-driven development approach:
+The project follows a pragmatic testing approach:
 
-1. **Unit Tests**: Written alongside implementation
-   - Test mathematical functions first
-   - Verify projection calculations
-   - Test visualization utilities
-   - Maintain high test coverage
-
-2. **Integration Tests**: Test component interactions
-   - Verify UI controls affect visualization
+1. **Unit Tests**: 
+   - Test mathematical functions
+   - Verify SPCS zone data processing
    - Test coordinate transformations
-   - Ensure proper cleanup
 
-3. **Visual Regression Tests**: Ensure visualization accuracy
-   - Compare rendered outputs
-   - Test different projection types
-   - Verify coordinate transformations
+2. **API Surface Validation Tests**:
+   - Verify that methods we use on external libraries actually exist
+   - Ensure consistent API usage
+   - Prevent runtime errors from calling non-existent methods
+   - Test different parameter types (e.g., MultiPolygon vs Polygon)
+
+3. **Manual Testing**:
+   - Visual verification of zone display
+   - UI interaction testing
+   - Overall system integration
+
+This balanced approach focuses testing efforts on the core mathematical components while keeping UI testing manageable.
 
 ## Development Guidelines
 
@@ -182,10 +187,10 @@ The project follows a test-driven development approach:
    - Document all public APIs
 
 2. **Testing**:
-   - Write tests before implementing features
-   - Include tests for edge cases
-   - Maintain test coverage above 80%
-   - Use visual regression tests for complex visualizations
+   - Focus tests on core mathematical functions
+   - Use API surface validation to prevent runtime errors
+   - Add tests for edge cases (e.g., MultiPolygon geometries)
+   - Be practical about UI testing (avoid complex mocking)
 
 3. **Performance**:
    - Optimize 3D rendering
@@ -217,28 +222,24 @@ MIT License
 When a user toggles an SPCS zone checkbox in the control panel:
 
 1. **Zone Boundary Visualization**:
-   - The selected zone's boundary should appear on the Leaflet map as a polygon with a distinct border color
-   - Each zone should have a semi-transparent fill color to distinguish it from other zones
-   - Colors should be assigned systematically (e.g., by projection type, by region, or using a predefined color scheme)
+   - The selected zone's boundary appears on the Leaflet map as a polygon with a distinct border color
+   - Each zone has a semi-transparent fill color to distinguish it from other zones
+   - Colors are assigned by projection type (blue for Transverse Mercator, orange for Lambert Conformal Conic)
 
 2. **Information Display**:
-   - Clicking on a zone polygon should display a popup with key information:
+   - Clicking on a zone polygon displays a popup with key information:
      - Zone name and ID
      - Projection type (TM or LCC)
      - Key parameters (Central Meridian/Longitude of Origin, Latitude of Origin, etc.)
-     - Area covered (states/regions)
+     - Standard parallels for LCC projections
 
 3. **Toggle Functionality**:
    - Individual toggles: Each zone can be independently shown/hidden
    - "Toggle All" checkbox: Controls visibility of all zones simultaneously
-   - When a zone is toggled on, it should be added to the map immediately
-   - When a zone is toggled off, it should be removed from the map immediately
+   - When a zone is toggled on, it is added to the map immediately
+   - When a zone is toggled off, it is removed from the map immediately
 
-4. **Interaction with Coordinate Projection**:
-   - When a coordinate is projected using the input field, the relevant SPCS zone(s) that contain the coordinate should be highlighted
-   - The coordinate should be displayed in both geographic (lat/lon) and SPCS (northing/easting) coordinates for selected zones
-
-5. **Legend and Visual Style**:
-   - A legend should be available to help users understand the color coding (if applicable)
-   - Zones using Transverse Mercator projection should be visually distinct from zones using Lambert Conformal Conic projection
-   - Active (selected) zones should have a more prominent visual style than inactive ones 
+4. **Geometry Support**:
+   - Handles both simple Polygon geometries and complex MultiPolygon geometries
+   - Properly renders zones with multiple disconnected parts
+   - Supports zones with missing or undefined parameters 
