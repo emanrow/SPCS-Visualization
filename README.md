@@ -213,7 +213,7 @@ npm run build
 
 ## Implementation Plan
 
-### Phase 1: Core Infrastructure (Current)
+### Phase 1: Core Infrastructure (Complete)
 - [x] Set up project structure
 - [x] Configure build system (Vite)
 - [x] Set up testing environment
@@ -225,19 +225,23 @@ npm run build
 - [x] Fix zone information display in popups with actual API data
 - [x] Add auto-zoom to selected zone(s) feature
 
-### Phase 2: SPCS Implementation
+### Phase 2: SPCS Zone 3D Visualization (Current)
 - [x] Create SPCS zone parameter database using NOAA official documentation
 - [x] Extract zone parameters from NOS NGS 13 appendices for both NAD83 and NAD27
-- [ ] Implement TM projection calculations
-- [ ] Implement LCC projection calculations
-- [ ] Add scale factor calculations
-- [ ] Add convergence angle calculations
-- [ ] Write unit tests for all calculations
+- [x] Implement datum ellipsoid visualization with graticule
+- [ ] Implement TM projection coordinate system geometry
+- [ ] Implement LCC projection coordinate system geometry
+- [ ] Add coordinate system axes and labels for each SPCS zone
+- [ ] Implement zone selection sync between 2D and 3D views
+- [ ] Write unit tests for coordinate system calculations
+- [ ] Add visual tests for geometry alignment
 
-### Phase 3: Visualization Components
-- [ ] Create Earth visualization
-- [ ] Implement projection surface visualization (cylinders/cones)
-- [ ] Add coordinate transformation visualization
+### Phase 3: Advanced Visualization Features (Future)
+- [ ] Show SPCS zone boundaries on datum ellipsoid
+- [ ] Show zone boundaries on their respective coordinate planes
+- [ ] Implement coordinate transformation visualization
+  - [ ] Add pins/rays from datum surface through coordinate systems
+  - [ ] Show transformation path animations
 - [ ] Add scale factor visualization
 - [ ] Add convergence angle visualization
 - [ ] Write unit tests for visualization components
