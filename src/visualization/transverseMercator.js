@@ -44,7 +44,7 @@ export function createTransverseMercatorCylinder(scene, zone) {
   const cylinderMaterial = new THREE.MeshBasicMaterial({
     color: 0x3366ff,
     transparent: true,
-    opacity: 0.2,
+    opacity: 0.1,
     side: THREE.DoubleSide,
     wireframe: false
   });
@@ -179,18 +179,20 @@ function addBaselineLines(cylinderGroup) {
   const verticalLineMaterial = new THREE.LineBasicMaterial({
     color: PRIMARY_LINE_COLOR,
     opacity: LINE_OPACITY,
-    transparent: true
+    transparent: true,
+    depthTest: false,  // Make line always visible
+    linewidth: 2       // Thicker line for better visibility
   });
   
   const verticalLine = new THREE.Line(verticalLineGeometry, verticalLineMaterial);
   verticalLine.name = 'angularBasis';
   cylinderGroup.add(verticalLine);
   
-  // Create the horizontal ring at the center
+  // Create the horizontal ring at the center - create a full circle but make it always visible
   const centerRingGeometry = new THREE.BufferGeometry();
   const centerRingPositions = [];
   
-  // Create points around the circle at y=0 (center)
+  // Create points around the complete circle at y=0 (center)
   for (let i = 0; i <= CYLINDER_SEGMENTS; i++) {
     const theta = (i / CYLINDER_SEGMENTS) * Math.PI * 2;
     const x = radius * Math.cos(theta);
@@ -200,14 +202,60 @@ function addBaselineLines(cylinderGroup) {
   
   centerRingGeometry.setAttribute('position', new THREE.Float32BufferAttribute(centerRingPositions, 3));
   
-  const centerRingMaterial = new THREE.LineBasicMaterial({
+  // Create two materials - one for the front half and one for the back half
+  const frontMaterial = new THREE.LineBasicMaterial({
     color: PRIMARY_LINE_COLOR,
     opacity: LINE_OPACITY,
-    transparent: true
+    transparent: true,
+    depthTest: false,  // Make line always visible
+    linewidth: 3       // Extra thick for the front half
   });
   
-  const centerRing = new THREE.Line(centerRingGeometry, centerRingMaterial);
+  const backMaterial = new THREE.LineBasicMaterial({
+    color: PRIMARY_LINE_COLOR,
+    opacity: LINE_OPACITY * 0.5,  // More transparent for the back half
+    transparent: true,
+    depthTest: false,  // Make line always visible
+    linewidth: 1       // Thinner for the back half
+  });
+  
+  // Create a custom shader material that makes the ring always face the camera
+  const centerRingMaterial = new THREE.ShaderMaterial({
+    uniforms: {
+      color: { value: new THREE.Color(PRIMARY_LINE_COLOR) },
+      opacity: { value: LINE_OPACITY }
+    },
+    vertexShader: `
+      varying vec3 vViewPosition;
+      
+      void main() {
+        vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+        vViewPosition = -mvPosition.xyz;
+        gl_Position = projectionMatrix * mvPosition;
+      }
+    `,
+    fragmentShader: `
+      uniform vec3 color;
+      uniform float opacity;
+      varying vec3 vViewPosition;
+      
+      void main() {
+        // Calculate dot product between view direction and normal
+        float cosAngle = normalize(vViewPosition).z;
+        
+        // Fade out the back side
+        float finalOpacity = opacity * (0.3 + 0.7 * abs(cosAngle));
+        
+        gl_FragColor = vec4(color, finalOpacity);
+      }
+    `,
+    transparent: true,
+    depthTest: false
+  });
+  
+  const centerRing = new THREE.Line(centerRingGeometry, frontMaterial);
   centerRing.name = 'centerRing';
+  centerRing.renderOrder = 999;  // Ensure this renders last (on top)
   cylinderGroup.add(centerRing);
 }
 
