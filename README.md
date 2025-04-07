@@ -37,6 +37,24 @@ The visualization should help users understand:
 - Convergence angle (difference between true north and grid north)
 - How different datums affect the same geographic location
 
+## SPCS Zone Parameter Sources
+
+For the implementation of SPCS zones and their projections, we need accurate parameters for each zone. The following resources provide official parameters:
+
+1. **NOAA National Geodetic Survey Documentation**:
+   - [NOAA Manual NOS NGS 5: State Plane Coordinate System of 1983](https://geodesy.noaa.gov/library/pdfs/NOAA_Manual_NOS_NGS_0005.pdf) - Comprehensive manual on SPCS83
+   - [NOS NGS 13: The State Plane Coordinate System (Appendices)](https://geodesy.noaa.gov/library/pdfs/SP_NOS_NGS_13.pdf) - Contains complete tables of parameters for NAD 1983 and 1927 in the appendices
+
+2. **EPSG Database**:
+   - [EPSG.io](https://epsg.io/) - Searchable database of coordinate reference systems
+   - Contains definitions for SPCS zones with projection parameters
+
+3. **Proj4js Library**:
+   - [Proj4js GitHub](https://github.com/proj4js/proj4js) - JavaScript library for coordinate transformations
+   - Supports Transverse Mercator and Lambert Conformal Conic projections
+
+For our implementation, we will primarily use the NOAA documentation as the authoritative source for zone parameters.
+
 ## Tech Stack
 
 - Frontend:
@@ -131,7 +149,8 @@ npm run build
 - [x] Add auto-zoom to selected zone(s) feature
 
 ### Phase 2: SPCS Implementation
-- [ ] Create SPCS zone parameter database
+- [ ] Create SPCS zone parameter database using NOAA official documentation
+- [ ] Extract zone parameters from NOS NGS 13 appendices for both NAD83 and NAD27
 - [ ] Implement TM projection calculations
 - [ ] Implement LCC projection calculations
 - [ ] Add scale factor calculations
