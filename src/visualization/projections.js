@@ -7,6 +7,8 @@
  * - Oblique Mercator (OM): Cylinder tangent to the ellipsoid along an oblique great circle
  */
 
+import { createTransverseMercatorCylinder } from './transverseMercator.js';
+
 /**
  * Executive function to dispatch to specific projection visualization logic
  * based on the projection type
@@ -19,14 +21,13 @@ export function visualizeProjection(scene, zone) {
   const projectionType = getProjectionType(zone);
   console.log(`Visualizing ${projectionType} projection for zone: ${zone.name}`);
   
-  // For now, just log the projection type and parameters
+  // Log the projection details
   logProjectionDetails(zone);
   
-  // In future implementations, call specific visualization functions:
+  // Call specific visualization functions based on projection type
   switch (projectionType) {
     case 'Transverse Mercator':
-      // TODO: return visualizeTransverseMercator(scene, zone);
-      break;
+      return createTransverseMercatorCylinder(scene, zone);
     case 'Lambert Conformal Conic':
       // TODO: return visualizeLambertConformalConic(scene, zone);
       break;
