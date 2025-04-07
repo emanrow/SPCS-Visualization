@@ -69,6 +69,45 @@ export function createTransverseMercatorCylinder(scene, zone) {
   cylinderGroup.rotateX(Math.PI / 2);
   cylinderGroup.rotateZ(Math.PI / 2);
   
+  // Apply SPCS zone-specific rotations
+  if (zone.spcsParams && zone.spcsParams.params) {
+    const params = zone.spcsParams.params;
+    
+    // 1. Rotate to Central Meridian (around Z-axis)
+    if (params.centralMeridian) {
+      // Parse the DMS string (e.g., "146 00 W" -> -146 degrees)
+      const matches = params.centralMeridian.match(/(\d+)\s+(\d+)\s+([WE])/);
+      if (matches) {
+        const degrees = parseInt(matches[1]);
+        const minutes = parseInt(matches[2]);
+        const direction = matches[3];
+        let angle = degrees + (minutes / 60);
+        if (direction === 'W') angle = -angle;
+        
+        // Convert to radians and rotate
+        cylinderGroup.rotateZ(-angle * Math.PI / 180);
+        console.log(`Rotated cylinder to Central Meridian: ${angle}°`);
+      }
+    }
+    
+    // 2. Rotate to Latitude of Origin (around Y-axis)
+    if (params.latitudeOfOrigin) {
+      // Parse the DMS string (e.g., "54 00 N" -> 54 degrees)
+      const matches = params.latitudeOfOrigin.match(/(\d+)\s+(\d+)\s+([NS])/);
+      if (matches) {
+        const degrees = parseInt(matches[1]);
+        const minutes = parseInt(matches[2]);
+        const direction = matches[3];
+        let angle = degrees + (minutes / 60);
+        if (direction === 'S') angle = -angle;
+        
+        // Convert to radians and rotate
+        cylinderGroup.rotateY(angle * Math.PI / 180);
+        console.log(`Rotated cylinder to Latitude of Origin: ${angle}°`);
+      }
+    }
+  }
+  
   // Add the cylinder group to the scene
   scene.add(cylinderGroup);
   

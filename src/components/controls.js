@@ -123,7 +123,21 @@ export function initControls(map, scene, camera) {
               map.removeLayer(layer);
               zoneData.visible.delete(idx);
               
-              // TODO: Remove projection visualization when zone is deselected
+              // Remove projection visualization when zone is deselected
+              const cylinderGroup = scene.getObjectByName('transverseMercatorCylinder');
+              if (cylinderGroup) {
+                scene.remove(cylinderGroup);
+                // Dispose of geometries and materials to prevent memory leaks
+                cylinderGroup.traverse((object) => {
+                  if (object instanceof THREE.Mesh) {
+                    object.geometry.dispose();
+                    object.material.dispose();
+                  } else if (object instanceof THREE.Line) {
+                    object.geometry.dispose();
+                    object.material.dispose();
+                  }
+                });
+              }
             }
             
             // Update "Toggle All" checkbox state
@@ -161,7 +175,21 @@ export function initControls(map, scene, camera) {
             map.removeLayer(zoneData.layers[idx]);
             zoneData.visible.delete(idx);
             
-            // TODO: Remove projection visualization when zones are deselected
+            // Remove projection visualization
+            const cylinderGroup = scene.getObjectByName('transverseMercatorCylinder');
+            if (cylinderGroup) {
+              scene.remove(cylinderGroup);
+              // Dispose of geometries and materials to prevent memory leaks
+              cylinderGroup.traverse((object) => {
+                if (object instanceof THREE.Mesh) {
+                  object.geometry.dispose();
+                  object.material.dispose();
+                } else if (object instanceof THREE.Line) {
+                  object.geometry.dispose();
+                  object.material.dispose();
+                }
+              });
+            }
           }
         });
         
