@@ -193,6 +193,162 @@
           "units": "meters"
         }
       },
+      "0407": {
+        "name": "California VII",
+        "fips": "0407",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "118 20 W",
+          "latitudeOfOrigin": "34 08 N",
+          "standardParallel1": "33 52 N",
+          "standardParallel2": "34 25 N",
+          "scaleFactorDenominator": 87223,
+          "falseEasting": 4186692.58,
+          "falseNorthing": 4160926.74,
+          "units": "meters",
+          "notes": "LA County (added by 1945)"
+        }
+      },
+      "0501": {
+        "name": "Colorado North",
+        "fips": "0501",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "105 30 W",
+          "latitudeOfOrigin": "39 20 N",
+          "standardParallel1": "39 43 N",
+          "standardParallel2": "40 47 N",
+          "scaleFactorDenominator": 23174,
+          "falseEasting": 2000000.0,
+          "falseNorthing": 0.0,
+          "units": "feet_us"
+        }
+      },
+      "0502": {
+        "name": "Colorado Central",
+        "fips": "0502",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "105 30 W",
+          "latitudeOfOrigin": "37 50 N",
+          "standardParallel1": "38 27 N",
+          "standardParallel2": "39 45 N",
+          "scaleFactorDenominator": 15604,
+          "falseEasting": 2000000.0,
+          "falseNorthing": 0.0,
+          "units": "feet_us"
+        }
+      },
+      "0503": {
+        "name": "Colorado South",
+        "fips": "0503",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "105 30 W",
+          "latitudeOfOrigin": "36 40 N",
+          "standardParallel1": "37 14 N",
+          "standardParallel2": "38 26 N",
+          "scaleFactorDenominator": 18315,
+          "falseEasting": 2000000.0,
+          "falseNorthing": 0.0,
+          "units": "feet_us"
+        }
+      },
+      "0600": {
+        "name": "Connecticut",
+        "fips": "0600",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "72 45 W",
+          "latitudeOfOrigin": "40 50 N",
+          "standardParallel1": "41 12 N",
+          "standardParallel2": "41 52 N",
+          "scaleFactorDenominator": 59316,
+          "falseEasting": 600000.0,
+          "falseNorthing": 0.0,
+          "units": "feet_us"
+        }
+      },
+      "0700": {
+        "name": "Delaware",
+        "fips": "0700",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "75 25 W",
+          "latitudeOfOrigin": "38 00 N",
+          "scaleFactorDenominator": 200000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "feet_us"
+        }
+      },
+      "0901": {
+        "name": "Florida East",
+        "fips": "0901",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "81 00 W",
+          "latitudeOfOrigin": "24 20 N",
+          "scaleFactorDenominator": 17000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "feet_us"
+        }
+      },
+      "0902": {
+        "name": "Florida West",
+        "fips": "0902",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "82 00 W",
+          "latitudeOfOrigin": "24 20 N",
+          "scaleFactorDenominator": 17000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "feet_us"
+        }
+      },
+      "0903": {
+        "name": "Florida North",
+        "fips": "0903",
+        "projectionType": "LCC",
+        "params": {
+          "longitudeOfOrigin": "84 30 W",
+          "latitudeOfOrigin": "29 00 N",
+          "standardParallel1": "29 35 N",
+          "standardParallel2": "30 45 N",
+          "scaleFactorDenominator": 19393,
+          "falseEasting": 2000000.0,
+          "falseNorthing": 0.0,
+          "units": "feet_us"
+        }
+      },
+      "1001": {
+        "name": "Georgia East",
+        "fips": "1001",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "82 10 W",
+          "latitudeOfOrigin": "30 00 N",
+          "scaleFactorDenominator": 10000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "feet_us"
+        }
+      },
+      "1002": {
+        "name": "Georgia West",
+        "fips": "1002",
+        "projectionType": "TM",
+        "params": {
+          "centralMeridian": "84 10 W",
+          "latitudeOfOrigin": "30 00 N",
+          "scaleFactorDenominator": 10000,
+          "falseEasting": 500000.0,
+          "falseNorthing": 0.0,
+          "units": "feet_us"
+        }
+      },
       "5001": {
         "name": "Alaska 1",
         "fips": "5001",
@@ -628,107 +784,6 @@
           "standardParallel2": "27 50 N",
           "scaleFactorDenominator": 9505,
           "falseEasting": 1000000.0,
-          "falseNorthing": 0.0,
-          "units": "meters"
-        }
-      },
-      "2001": {
-        "name": "Kentucky North",
-        "fips": "2001",
-        "projectionType": "LCC",
-        "params": {
-          "longitudeOfOrigin": "84 15 W",
-          "latitudeOfOrigin": "37 30 N",
-          "standardParallel1": "37 58 N",
-          "standardParallel2": "38 58 N",
-          "scaleFactorDenominator": 10520,
-          "falseEasting": 500000.0,
-          "falseNorthing": 0.0,
-          "units": "meters"
-        }
-      },
-      "2402": {
-        "name": "Michigan Central",
-        "fips": "2402",
-        "projectionType": "LCC",
-        "params": {
-          "longitudeOfOrigin": "84 22 W",
-          "latitudeOfOrigin": "43 19 N",
-          "standardParallel1": "44 11 N",
-          "standardParallel2": "45 42 N",
-          "scaleFactorDenominator": 11456,
-          "falseEasting": 6000000.0,
-          "falseNorthing": 0.0,
-          "units": "feet_us"
-        }
-      },
-      "3104": {
-        "name": "New York Long Island",
-        "fips": "3104",
-        "projectionType": "LCC",
-        "params": {
-          "longitudeOfOrigin": "74 00 W",
-          "latitudeOfOrigin": "40 10 N",
-          "standardParallel1": "40 40 N",
-          "standardParallel2": "41 02 N",
-          "scaleFactorDenominator": 196094,
-          "falseEasting": 300000.0,
-          "falseNorthing": 0.0,
-          "units": "meters"
-        }
-      },
-      "5200": {
-        "name": "Puerto Rico & Virgin Islands",
-        "fips": "5200",
-        "projectionType": "LCC",
-        "params": {
-          "longitudeOfOrigin": "66 26 W",
-          "latitudeOfOrigin": "17 50 N",
-          "standardParallel1": "18 02 N",
-          "standardParallel2": "18 26 N",
-          "scaleFactorDenominator": 165138,
-          "falseEasting": 200000.0,
-          "falseNorthing": 200000.0,
-          "units": "meters"
-        }
-      },
-      "1801": {
-        "name": "Maine East",
-        "fips": "1801",
-        "projectionType": "TM",
-        "params": {
-          "centralMeridian": "68 30 W",
-          "latitudeOfOrigin": "43 40 N",
-          "scaleFactorDenominator": 10000,
-          "falseEasting": 300000.0,
-          "falseNorthing": 0.0,
-          "units": "meters"
-        }
-      },
-      "1802": {
-        "name": "Maine West",
-        "fips": "1802",
-        "projectionType": "TM",
-        "params": {
-          "centralMeridian": "70 10 W",
-          "latitudeOfOrigin": "42 50 N",
-          "scaleFactorDenominator": 30000,
-          "falseEasting": 900000.0,
-          "falseNorthing": 0.0,
-          "units": "meters"
-        }
-      },
-      "1900": {
-        "name": "Maryland",
-        "fips": "1900",
-        "projectionType": "LCC",
-        "params": {
-          "longitudeOfOrigin": "77 00 W",
-          "latitudeOfOrigin": "37 40 N",
-          "standardParallel1": "38 18 N",
-          "standardParallel2": "39 27 N",
-          "scaleFactorDenominator": 19939,
-          "falseEasting": 400000.0,
           "falseNorthing": 0.0,
           "units": "meters"
         }

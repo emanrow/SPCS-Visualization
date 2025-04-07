@@ -1,5 +1,72 @@
 import { jest } from '@jest/globals';
-import { loadSPCSZones, processZoneData, createZoneBoundary, getProjectionType } from '../../src/math/spcs.js';
+import { loadSPCSZones, processZoneData, createZoneBoundary, getProjectionType, getSPCSZoneParameters, formatDDMMSS } from '../../src/math/spcs.js';
+
+// Mock the spcsZoneParameters.json import
+jest.mock('../../src/math/spcsZoneParameters.json', () => ({
+  metadata: {
+    description: "State Plane Coordinate System Zone Parameters",
+    source: "NOAA National Geodetic Survey - NOS NGS 13"
+  },
+  NAD83: {
+    zones: {
+      "0101": {
+        name: "Alabama East",
+        fips: "0101",
+        projectionType: "TM",
+        params: {
+          centralMeridian: "85 50 W",
+          latitudeOfOrigin: "30 30 N",
+          scaleFactorDenominator: 25000,
+          falseEasting: 200000.0,
+          falseNorthing: 0.0,
+          units: "meters"
+        }
+      },
+      "2600": {
+        name: "Michigan Central",
+        fips: "2600",
+        projectionType: "TM",
+        params: {
+          centralMeridian: "84 22 W",
+          latitudeOfOrigin: "41 30 N",
+          scaleFactorDenominator: 11000,
+          falseEasting: 500000.0,
+          falseNorthing: 0.0,
+          units: "meters"
+        }
+      },
+      "5001": {
+        name: "Alaska 1",
+        fips: "5001",
+        projectionType: "OM",
+        params: {
+          centralMeridian: "Special",
+          latitudeOfOrigin: "57 00 N",
+          falseEasting: 5000000.0,
+          falseNorthing: 0.0,
+          units: "meters"
+        }
+      }
+    }
+  },
+  NAD27: {
+    zones: {
+      "0101": {
+        name: "Alabama East",
+        fips: "0101",
+        projectionType: "TM",
+        params: {
+          centralMeridian: "85 50 W",
+          latitudeOfOrigin: "30 30 N",
+          scaleFactorDenominator: 25000,
+          falseEasting: 500000.0,
+          falseNorthing: 0.0,
+          units: "US survey feet"
+        }
+      }
+    }
+  }
+}));
 
 describe('SPCS Zone Data Handling', () => {
   // Mock the fetch response
@@ -148,5 +215,91 @@ describe('SPCS Zone Data Handling', () => {
     
     expect(getProjectionType(processedZones[0])).toBe('Transverse Mercator');
     expect(getProjectionType(processedZones[1])).toBe('Lambert Conformal Conic');
+  });
+});
+
+describe('SPCS Zone Parameters Database Access', () => {
+  test('gets correct zone parameters for valid FIPS code', () => {
+    const params = getSPCSZoneParameters('0101');
+    expect(params).toBeDefined();
+    expect(params.name).toBe('Alabama East');
+    expect(params.projectionType).toBe('TM');
+    expect(params.params.centralMeridian).toBe('85 50 W');
+    expect(params.params.scaleFactorDenominator).toBe(25000);
+  });
+
+  test('pads FIPS code correctly', () => {
+    const params = getSPCSZoneParameters('101');
+    expect(params).toBeDefined();
+    expect(params.name).toBe('Alabama East');
+  });
+
+  test('handles numeric FIPS code', () => {
+    const params = getSPCSZoneParameters(101);
+    expect(params).toBeDefined();
+    expect(params.name).toBe('Alabama East');
+  });
+
+  test('returns null for invalid FIPS code', () => {
+    const params = getSPCSZoneParameters('9999');
+    expect(params).toBeNull();
+  });
+
+  test('returns null for missing FIPS code', () => {
+    const params = getSPCSZoneParameters();
+    expect(params).toBeNull();
+  });
+
+  test('retrieves NAD27 parameters when specified', () => {
+    const params = getSPCSZoneParameters('0101', 'NAD27');
+    expect(params).toBeDefined();
+    expect(params.params.falseEasting).toBe(500000.0);
+    expect(params.params.units).toBe('feet_us');
+  });
+
+  test('returns null for invalid datum', () => {
+    const params = getSPCSZoneParameters('0101', 'INVALID');
+    expect(params).toBeNull();
+  });
+});
+
+describe('DDMMSS Coordinate Formatting', () => {
+  test('formats DDMMSS string with proper symbols', () => {
+    expect(formatDDMMSS('85 50 W')).toBe('85° 50′ W');
+    expect(formatDDMMSS('30 30 N')).toBe('30° 30′ N');
+  });
+
+  test('handles coordinates with seconds', () => {
+    expect(formatDDMMSS('122 19 45 W')).toBe('122° 19′ 45″ W');
+    expect(formatDDMMSS('37 52 30 N')).toBe('37° 52′ 30″ N');
+  });
+
+  test('omits seconds when they are zero', () => {
+    expect(formatDDMMSS('122 19 00 W')).toBe('122° 19′ W');
+  });
+
+  test('handles case variations in direction', () => {
+    expect(formatDDMMSS('85 50 w')).toBe('85° 50′ W');
+    expect(formatDDMMSS('30 30 n')).toBe('30° 30′ N');
+  });
+
+  test('handles decimal degrees format', () => {
+    expect(formatDDMMSS('85.8333')).toBe('85.8333°');
+    expect(formatDDMMSS('-122.3264')).toBe('-122.3264°');
+  });
+
+  test('returns original string if format is unrecognized', () => {
+    const unusual = 'Unusual Format';
+    expect(formatDDMMSS(unusual)).toBe(unusual);
+  });
+
+  test('handles null or undefined input', () => {
+    expect(formatDDMMSS(null)).toBe('Not specified');
+    expect(formatDDMMSS(undefined)).toBe('Not specified');
+  });
+
+  test('handles non-string input', () => {
+    expect(formatDDMMSS(12345)).toBe('Not specified');
+    expect(formatDDMMSS({})).toBe('Not specified');
   });
 }); 
