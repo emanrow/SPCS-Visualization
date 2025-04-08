@@ -2,6 +2,7 @@ import { loadSPCSZones, processZoneData } from '../math/spcs.js';
 import { createZoneLayer, createZonePopup } from './map.js';
 import { zoomToVisibleZones } from './mapUtils.js';
 import { visualizeProjection } from '../visualization/projections.js';
+import * as THREE from 'three';
 
 export function initControls(map, scene, camera) {
   const coordInput = document.getElementById('coord-input');

@@ -206,7 +206,12 @@ npm run dev
 npm run test
 ```
 
-4. Build for production:
+4. Run linting:
+```bash
+npm run lint
+```
+
+5. Build for production:
 ```bash
 npm run build
 ```
@@ -337,13 +342,20 @@ When a user toggles an SPCS zone checkbox in the control panel:
    - Add tests for edge cases (e.g., MultiPolygon geometries)
    - Be practical about UI testing (avoid complex mocking)
 
-3. **Performance**:
+3. **Linting**:
+   - Run `npm run lint` before committing code
+   - ESLint is configured with the `no-undef` rule to catch reference errors
+   - Ensure all variables are properly imported from their modules
+   - Do not rely on global THREE namespace; always import it explicitly
+   - The ESLint configuration enforces proper variable usage
+
+4. **Performance**:
    - Optimize 3D rendering
    - Use efficient data structures
    - Implement proper cleanup
    - Profile complex calculations
 
-4. **Documentation**:
+5. **Documentation**:
    - Document all public APIs
    - Include usage examples
    - Keep README up to date
