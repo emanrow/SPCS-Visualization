@@ -8,6 +8,7 @@ export function initControls(map, scene, camera) {
   const coordInput = document.getElementById('coord-input');
   const projectBtn = document.getElementById('project-btn');
   const spcsToggle = document.getElementById('spcs-toggle');
+  const toggleAllContainer = document.getElementById('toggle-all-container');
   
   // Store zone data and layers
   const zoneData = {
@@ -61,7 +62,7 @@ export function initControls(map, scene, camera) {
       // Create toggle UI
       spcsToggle.innerHTML = '';
       
-      // Add "Toggle All" checkbox
+      // Add "Clear All" checkbox to the toggle-all-container
       const toggleAllDiv = document.createElement('div');
       toggleAllDiv.className = 'form-check mb-2';
       
@@ -69,20 +70,16 @@ export function initControls(map, scene, camera) {
       toggleAllCheckbox.className = 'form-check-input';
       toggleAllCheckbox.type = 'checkbox';
       toggleAllCheckbox.id = 'toggle-all';
+      toggleAllCheckbox.disabled = true; // Initially disabled
       
       const toggleAllLabel = document.createElement('label');
-      toggleAllLabel.className = 'form-check-label fw-bold';
+      toggleAllLabel.className = 'form-check-label fw-bold text-muted'; // Initially greyed out
       toggleAllLabel.htmlFor = 'toggle-all';
       toggleAllLabel.textContent = 'Clear All Zones';
       
       toggleAllDiv.appendChild(toggleAllCheckbox);
       toggleAllDiv.appendChild(toggleAllLabel);
-      spcsToggle.appendChild(toggleAllDiv);
-      
-      // Add horizontal rule
-      const hr = document.createElement('hr');
-      hr.className = 'my-2';
-      spcsToggle.appendChild(hr);
+      toggleAllContainer.appendChild(toggleAllDiv);
       
       // Check if we have zones
       if (zoneData.zones.length === 0) {
@@ -233,6 +230,15 @@ export function initControls(map, scene, camera) {
         
         toggleAllCheckbox.checked = allChecked;
         toggleAllCheckbox.indeterminate = someChecked;
+        
+        // Enable or disable based on whether any zones are selected
+        if (zoneData.visible.size > 0) {
+          toggleAllCheckbox.disabled = false;
+          toggleAllLabel.classList.remove('text-muted');
+        } else {
+          toggleAllCheckbox.disabled = true;
+          toggleAllLabel.classList.add('text-muted');
+        }
       }
     })
     .catch(error => {

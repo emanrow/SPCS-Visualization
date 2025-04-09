@@ -56,7 +56,14 @@
       padding: 10px;
       border-radius: 5px;
       max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .zone-list {
       overflow-y: auto;
+      max-height: 50vh;
+      margin-top: 10px;
     }
     
     /* SPCS Zone Popup Styles */
@@ -97,14 +104,19 @@
   <div id="map"></div>
   <div id="three-container"></div>
   <div class="control-panel">
-    <h6>Toggle SPCS Zones</h6>
-    <div id="spcs-toggle" class="form-check">
-      Loading...
+    <div class="fixed-controls">
+      <div class="mb-3">
+        <label>Enter GPS Coordinate:</label>
+        <input id="coord-input" class="form-control" placeholder="e.g., 42.2808,-83.7430">
+        <button id="project-btn" class="btn btn-primary btn-sm mt-2">Project Coordinate</button>
+      </div>
+      <h6>Toggle SPCS Zones</h6>
+      <div id="toggle-all-container">
+        <!-- The Clear All Zones checkbox will be placed here -->
+      </div>
     </div>
-    <div class="mt-3">
-      <label>Enter GPS Coordinate:</label>
-      <input id="coord-input" class="form-control" placeholder="e.g., 42.2808,-83.7430">
-      <button id="project-btn" class="btn btn-primary btn-sm mt-2">Project Coordinate</button>
+    <div id="spcs-toggle" class="zone-list">
+      Loading...
     </div>
   </div>
 

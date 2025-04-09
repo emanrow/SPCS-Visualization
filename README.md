@@ -318,7 +318,7 @@ When a user toggles an SPCS zone checkbox in the control panel:
 
 3. **Toggle Functionality**:
    - Individual toggles: Each zone can be independently shown/hidden
-   - "Toggle All" checkbox: Controls visibility of all zones simultaneously
+   - "Clear All Zones" button: Removes all currently visible zones when clicked
    - When a zone is toggled on, it is added to the map immediately
    - When a zone is toggled off, it is removed from the map immediately
 
