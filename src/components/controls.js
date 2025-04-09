@@ -73,7 +73,7 @@ export function initControls(map, scene, camera) {
       const toggleAllLabel = document.createElement('label');
       toggleAllLabel.className = 'form-check-label fw-bold';
       toggleAllLabel.htmlFor = 'toggle-all';
-      toggleAllLabel.textContent = 'Toggle All Zones';
+      toggleAllLabel.textContent = 'Clear All Zones';
       
       toggleAllDiv.appendChild(toggleAllCheckbox);
       toggleAllDiv.appendChild(toggleAllLabel);
@@ -189,18 +189,11 @@ export function initControls(map, scene, camera) {
           // Skip checkboxes for zones with errors
           if (!zoneData.layers[idx]) return;
           
-          checkbox.checked = e.target.checked;
-          
-          if (e.target.checked) {
-            // Add all zones to map
-            zoneData.layers[idx].addTo(map);
-            zoneData.visible.add(idx);
+          // Only uncheck selected checkboxes
+          if (checkbox.checked) {
+            checkbox.checked = false;
             
-            // Visualize projection for this zone
-            const projectionObject = visualizeProjection(scene, zoneData.zones[idx]);
-            projectionObjects[idx] = projectionObject;
-          } else {
-            // Remove all zones from map
+            // Remove zone from map
             map.removeLayer(zoneData.layers[idx]);
             zoneData.visible.delete(idx);
             
@@ -224,7 +217,11 @@ export function initControls(map, scene, camera) {
           }
         });
         
-        // Zoom to all visible zones after toggling all
+        // Reset toggle checkbox state
+        e.target.checked = false;
+        e.target.indeterminate = false;
+        
+        // Zoom to all visible zones after clearing
         zoomToVisibleZones(map, zoneData.zones, zoneData.visible);
       });
       
