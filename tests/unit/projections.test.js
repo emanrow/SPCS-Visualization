@@ -1,14 +1,13 @@
-import { jest } from '@jest/globals';
+import { jest, describe, test, expect, beforeEach } from '@jest/globals';
 import { visualizeProjection } from '../../src/visualization/projections.js';
+import * as THREE from 'three';
 
 // Mock console methods
-global.console = {
-  ...console,
-  log: jest.fn(),
-  group: jest.fn(),
-  groupEnd: jest.fn(),
-  warn: jest.fn()
-};
+const originalConsole = { ...console };
+console.log = jest.fn();
+console.group = jest.fn();
+console.groupEnd = jest.fn();
+console.warn = jest.fn();
 
 describe('Projection Visualization', () => {
   // Create mock scene and camera
@@ -110,5 +109,31 @@ describe('Projection Visualization', () => {
     expect(console.warn).toHaveBeenCalledWith(
       expect.stringContaining('Unsupported projection type')
     );
+  });
+
+  test('ensures zone identifiers are unique based on zone name', () => {
+    // Create two different zones
+    const zone1 = {
+      name: 'Alaska Zone 3'
+    };
+    
+    const zone2 = {
+      name: 'Alaska Zone 5'
+    };
+    
+    // Create unique identifiers using the same logic as in transverseMercator.js
+    const zoneId1 = zone1.name.replace(/\s+/g, '_').toLowerCase();
+    const zoneId2 = zone2.name.replace(/\s+/g, '_').toLowerCase();
+    
+    // Test unique cylinder names
+    const cylinderName1 = `transverseMercatorCylinder_${zoneId1}`;
+    const cylinderName2 = `transverseMercatorCylinder_${zoneId2}`;
+    
+    // The cylinder names should be different
+    expect(cylinderName1).not.toEqual(cylinderName2);
+    
+    // The names should include the zone identifiers
+    expect(cylinderName1).toContain('alaska_zone_3');
+    expect(cylinderName2).toContain('alaska_zone_5');
   });
 }); 

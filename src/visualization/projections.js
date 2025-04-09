@@ -30,15 +30,18 @@ export function visualizeProjection(scene, zone) {
       return createTransverseMercatorCylinder(scene, zone);
     case 'Lambert Conformal Conic':
       // TODO: return visualizeLambertConformalConic(scene, zone);
+      console.warn('Lambert Conformal Conic visualization not implemented yet');
       break;
     case 'Oblique Mercator':
       // TODO: return visualizeObliqueMercator(scene, zone);
+      console.warn('Oblique Mercator visualization not implemented yet');
       break;
     default:
       console.warn(`Unsupported projection type: ${projectionType}`);
   }
   
-  return null;
+  // Return a null result if no visualization was created
+  return { cylinderGroup: null };
 }
 
 /**

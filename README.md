@@ -166,6 +166,13 @@ projection-demo/
   - Semi-transparent (opacity: 0.5) to prevent visual clutter
   - Primary lines (Equator, Prime Meridian) in lighter color
 
+### Zone Visualization System
+- Each SPCS zone visualization creates uniquely named 3D objects using the zone name
+- Zone 3D objects are tracked by their index in the zones array for proper reference management
+- When a zone is deselected, its specific 3D objects are removed from the scene
+- This prevents issues with removing the wrong zone's visualization when multiple zones are active
+- Error handling is in place to gracefully handle visualization failures
+
 ### Camera and Controls
 - Camera positioned initially at ~4x Earth radius
 - OrbitControls configured for Earth-scale navigation:

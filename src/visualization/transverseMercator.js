@@ -26,9 +26,12 @@ const LINE_OPACITY = 0.8;
  * @returns {Object} - Object containing the cylinder and related objects
  */
 export function createTransverseMercatorCylinder(scene, zone) {
+  // Create a unique identifier for this zone
+  const zoneId = zone.name.replace(/\s+/g, '_').toLowerCase();
+  
   // Create a cylinder group to hold all the cylinder components
   const cylinderGroup = new THREE.Group();
-  cylinderGroup.name = 'transverseMercatorCylinder';
+  cylinderGroup.name = `transverseMercatorCylinder_${zoneId}`;
   
   // Create the main cylinder geometry
   const cylinderGeometry = new THREE.CylinderGeometry(
@@ -51,7 +54,7 @@ export function createTransverseMercatorCylinder(scene, zone) {
   
   // Create the cylinder mesh
   const cylinder = new THREE.Mesh(cylinderGeometry, cylinderMaterial);
-  cylinder.name = 'tmCylinder';
+  cylinder.name = `tmCylinder_${zoneId}`;
   cylinderGroup.add(cylinder);
   
   // Add baseline lines to the cylinder

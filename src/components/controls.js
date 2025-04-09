@@ -16,6 +16,11 @@ export function initControls(map, scene, camera) {
     visible: new Set()
   };
   
+  // Create a projection map to store references to 3D objects by zone index
+  // This ensures each zone's 3D visualization can be individually tracked and removed
+  // without affecting other zones' visualizations
+  const projectionObjects = {};
+  
   // Handle coordinate projection
   projectBtn.addEventListener('click', () => {
     const coord = coordInput.value;
@@ -117,27 +122,49 @@ export function initControls(map, scene, camera) {
               layer.addTo(map);
               zoneData.visible.add(idx);
               
-              // Call the projection visualization function when zone is selected
-              visualizeProjection(scene, zone);
+              try {
+                // Call the projection visualization function when zone is selected
+                // and store the returned 3D objects for later reference
+                const projectionObject = visualizeProjection(scene, zone);
+                
+                // Store the projection object for this zone using its index as the key
+                // This allows us to retrieve exactly the right 3D objects when removing them
+                if (projectionObject) {
+                  projectionObjects[idx] = projectionObject;
+                } else {
+                  console.warn(`No projection visualization created for zone: ${zone.name}`);
+                }
+              } catch (error) {
+                console.error(`Error visualizing projection for zone ${zone.name}:`, error);
+              }
             } else {
               // Remove zone from map
               map.removeLayer(layer);
               zoneData.visible.delete(idx);
               
-              // Remove projection visualization when zone is deselected
-              const cylinderGroup = scene.getObjectByName('transverseMercatorCylinder');
-              if (cylinderGroup) {
-                scene.remove(cylinderGroup);
-                // Dispose of geometries and materials to prevent memory leaks
-                cylinderGroup.traverse((object) => {
-                  if (object instanceof THREE.Mesh) {
-                    object.geometry.dispose();
-                    object.material.dispose();
-                  } else if (object instanceof THREE.Line) {
-                    object.geometry.dispose();
-                    object.material.dispose();
-                  }
-                });
+              try {
+                // Remove the projection visualization for this specific zone only
+                // using the stored reference from when it was created
+                const projection = projectionObjects[idx];
+                if (projection && projection.cylinderGroup) {
+                  scene.remove(projection.cylinderGroup);
+                  // Dispose of geometries and materials to prevent memory leaks
+                  projection.cylinderGroup.traverse((object) => {
+                    if (object instanceof THREE.Mesh) {
+                      object.geometry.dispose();
+                      object.material.dispose();
+                    } else if (object instanceof THREE.Line) {
+                      object.geometry.dispose();
+                      object.material.dispose();
+                    }
+                  });
+                  // Remove the reference to avoid memory leaks
+                  delete projectionObjects[idx];
+                } else {
+                  console.warn(`No projection visualization found for zone index: ${idx}`);
+                }
+              } catch (error) {
+                console.error(`Error removing projection for zone ${zone.name}:`, error);
               }
             }
             
@@ -170,18 +197,19 @@ export function initControls(map, scene, camera) {
             zoneData.visible.add(idx);
             
             // Visualize projection for this zone
-            visualizeProjection(scene, zoneData.zones[idx]);
+            const projectionObject = visualizeProjection(scene, zoneData.zones[idx]);
+            projectionObjects[idx] = projectionObject;
           } else {
             // Remove all zones from map
             map.removeLayer(zoneData.layers[idx]);
             zoneData.visible.delete(idx);
             
-            // Remove projection visualization
-            const cylinderGroup = scene.getObjectByName('transverseMercatorCylinder');
-            if (cylinderGroup) {
-              scene.remove(cylinderGroup);
+            // Remove projection visualization for this zone
+            const projection = projectionObjects[idx];
+            if (projection && projection.cylinderGroup) {
+              scene.remove(projection.cylinderGroup);
               // Dispose of geometries and materials to prevent memory leaks
-              cylinderGroup.traverse((object) => {
+              projection.cylinderGroup.traverse((object) => {
                 if (object instanceof THREE.Mesh) {
                   object.geometry.dispose();
                   object.material.dispose();
@@ -190,6 +218,8 @@ export function initControls(map, scene, camera) {
                   object.material.dispose();
                 }
               });
+              // Remove the reference
+              delete projectionObjects[idx];
             }
           }
         });
