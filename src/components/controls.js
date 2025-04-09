@@ -2,9 +2,10 @@ import { loadSPCSZones, processZoneData } from '../math/spcs.js';
 import { createZoneLayer, createZonePopup } from './map.js';
 import { zoomToVisibleZones } from './mapUtils.js';
 import { visualizeProjection } from '../visualization/projections.js';
+import { orbitToLongitude, orbitToLatLong } from '../visualization/scene.js';
 import * as THREE from 'three';
 
-export function initControls(map, scene, camera) {
+export function initControls(map, scene, camera, controls) {
   const coordInput = document.getElementById('coord-input');
   const projectBtn = document.getElementById('project-btn');
   const spcsToggle = document.getElementById('spcs-toggle');
@@ -131,6 +132,70 @@ export function initControls(map, scene, camera) {
                 } else {
                   console.warn(`No projection visualization created for zone: ${zone.name}`);
                 }
+                
+                // Orbit the camera to the Central Meridian of the selected zone
+                let centralMeridian = 0; // Default to Prime Meridian
+                let latitudeOfOrigin = 0; // Default to Equator
+                
+                // Get the central meridian and latitude of origin from the zone parameters
+                if (zone.spcsParams && zone.spcsParams.params) {
+                  const params = zone.spcsParams.params;
+                  
+                  // Extract central meridian
+                  if (params.centralMeridian) {
+                    const cmStr = params.centralMeridian;
+                    // Parse the DMS string (e.g., "146 00 W" -> -146 degrees)
+                    const matches = cmStr.match(/(\d+)\s+(\d+)\s+([WE])/);
+                    if (matches) {
+                      const degrees = parseInt(matches[1]);
+                      const minutes = parseInt(matches[2]);
+                      const direction = matches[3];
+                      centralMeridian = degrees + (minutes / 60);
+                      if (direction === 'W') centralMeridian = -centralMeridian;
+                    }
+                  } else if (params.longitudeOfOrigin) {
+                    // Some LCC zones use longitudeOfOrigin instead of centralMeridian
+                    const cmStr = params.longitudeOfOrigin;
+                    const matches = cmStr.match(/(\d+)\s+(\d+)\s+([WE])/);
+                    if (matches) {
+                      const degrees = parseInt(matches[1]);
+                      const minutes = parseInt(matches[2]);
+                      const direction = matches[3];
+                      centralMeridian = degrees + (minutes / 60);
+                      if (direction === 'W') centralMeridian = -centralMeridian;
+                    }
+                  }
+                  
+                  // Extract latitude of origin
+                  if (params.latitudeOfOrigin) {
+                    const latStr = params.latitudeOfOrigin;
+                    // Parse the DMS string (e.g., "54 00 N" -> 54 degrees)
+                    const matches = latStr.match(/(\d+)\s+(\d+)\s+([NS])/);
+                    if (matches) {
+                      const degrees = parseInt(matches[1]);
+                      const minutes = parseInt(matches[2]);
+                      const direction = matches[3];
+                      latitudeOfOrigin = degrees + (minutes / 60);
+                      if (direction === 'S') latitudeOfOrigin = -latitudeOfOrigin;
+                    }
+                  }
+                  
+                  // Orbit to both central meridian and latitude of origin
+                  orbitToLatLong(controls, camera, latitudeOfOrigin, centralMeridian);
+                  
+                } else if (zone.centralMeridian !== undefined) {
+                  // Use the numeric central meridian directly
+                  centralMeridian = zone.centralMeridian;
+                  
+                  // Try to get latitude of origin
+                  if (zone.latitudeOfOrigin !== undefined) {
+                    latitudeOfOrigin = zone.latitudeOfOrigin;
+                    orbitToLatLong(controls, camera, latitudeOfOrigin, centralMeridian);
+                  } else {
+                    // If only central meridian is available, use orbitToLongitude
+                    orbitToLongitude(controls, camera, centralMeridian);
+                  }
+                }
               } catch (error) {
                 console.error(`Error visualizing projection for zone ${zone.name}:`, error);
               }
@@ -217,6 +282,9 @@ export function initControls(map, scene, camera) {
         // Reset toggle checkbox state
         e.target.checked = false;
         e.target.indeterminate = false;
+        
+        // Update the toggle button's disabled state
+        updateToggleAllState();
         
         // Zoom to all visible zones after clearing
         zoomToVisibleZones(map, zoneData.zones, zoneData.visible);

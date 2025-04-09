@@ -166,6 +166,22 @@ projection-demo/
   - Semi-transparent (opacity: 0.5) to prevent visual clutter
   - Primary lines (Equator, Prime Meridian) in lighter color
 
+### 3D Coordinate System and Camera Rotation
+- The Three.js coordinate system is set up with:
+  - +X axis pointing east (90° longitude)
+  - +Y axis pointing north (North Pole)
+  - +Z axis pointing to the Prime Meridian (0° longitude)
+- Camera rotation:
+  - When selecting a SPCS zone, the camera orbits to face the zone's Central Meridian and Latitude of Origin
+  - Positive longitudes (East) result in counterclockwise camera rotation (looking from above)
+  - Negative longitudes (West) result in clockwise camera rotation (looking from above)
+  - This matches real-world directions: moving east means moving counterclockwise when viewed from the North Pole
+  - The camera orbits while maintaining its current distance from the Earth's center
+- Spherical coordinates in Three.js:
+  - theta: Longitude angle in radians (0 = Prime Meridian, positive = East, negative = West)
+  - phi: Latitude angle in radians (0 = North Pole, π/2 = Equator, π = South Pole)
+  - radius: Distance from origin (Earth's center)
+
 ### Zone Visualization System
 - Each SPCS zone visualization creates uniquely named 3D objects using the zone name
 - Zone 3D objects are tracked by their index in the zones array for proper reference management
